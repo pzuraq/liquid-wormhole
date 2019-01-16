@@ -4,7 +4,7 @@ export default function wormhole(context) {
   let oldWormholeElement, newWormholeElement;
 
   if (this.oldElement) {
-    //get the old wormhole element from inside of the liquid-container
+    //this.oldElement is the liquid-container, get the wormhole element inside.
     oldWormholeElement = this.oldElement.find(
       ".liquid-wormhole-element:last-child"
     );
@@ -29,7 +29,7 @@ export default function wormhole(context) {
   }
 
   if (this.newElement) {
-    //get the new wormhole element from inside of the liquid-container
+    //this.newElement is the liquid-container, get the wormhole element inside.
     newWormholeElement = this.newElement.find(
       ".liquid-wormhole-element:last-child"
     );
@@ -60,14 +60,5 @@ export default function wormhole(context) {
     animation = context.lookup(use.name);
   }
 
-  return animation.apply(this, use.args).finally(() => {
-    if (this.oldElement && oldWormholeElement) {
-      oldWormholeElement.css({ visibility: "visible" });
-      oldWormholeElement.find(".liquid-child").css({ visibility: "visible" });
-    }
-    if (this.newElement && newWormholeElement) {
-      newWormholeElement.css({ visibility: "visible" });
-      newWormholeElement.find(".liquid-child").css({ visibility: "visible" });
-    }
-  });
+  return animation.apply(this, use.args);
 }
