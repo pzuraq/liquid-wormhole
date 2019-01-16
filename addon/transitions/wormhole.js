@@ -4,79 +4,61 @@ export default function wormhole(context) {
   let oldWormholeElement, newWormholeElement;
 
   if (this.oldElement) {
-    oldWormholeElement = this.oldElement.find('.liquid-wormhole-element:last-child');
+    //this.oldElement is the liquid-container, get the wormhole element inside.
+    oldWormholeElement = this.oldElement.find(
+      ".liquid-wormhole-element:last-child"
+    );
 
     this.oldElement = null;
 
     if (oldWormholeElement.length > 0) {
-      const newChild = oldWormholeElement.clone();
-      newChild.addClass('liquid-wormhole-temp-element');
-
-      oldWormholeElement.css({ visibility: 'hidden' });
-      oldWormholeElement.find('.liquid-child').css({ visibility: 'hidden' });
-
       const offset = oldWormholeElement.offset();
 
-      newChild.css({
-        position: 'absolute',
+      oldWormholeElement.css({
+        position: "absolute",
         top: offset.top,
         left: offset.left,
-        bottom: '',
-        right: '',
-        margin: '0px',
-        transform: ''
+        bottom: "",
+        right: "",
+        margin: "0px",
+        transform: ""
       });
 
-      newChild.appendTo(oldWormholeElement.parent());
-      this.oldElement = newChild;
+      this.oldElement = oldWormholeElement;
     }
   }
 
   if (this.newElement) {
-    newWormholeElement = this.newElement.find('.liquid-wormhole-element:last-child');
+    //this.newElement is the liquid-container, get the wormhole element inside.
+    newWormholeElement = this.newElement.find(
+      ".liquid-wormhole-element:last-child"
+    );
 
     this.newElement = null;
 
     if (newWormholeElement.length > 0) {
-      const newChild = newWormholeElement.clone();
-
-      newWormholeElement.css({ visibility: 'hidden' });
-      newWormholeElement.find('.liquid-child').css({ visibility: 'hidden' });
-
       const offset = newWormholeElement.offset();
 
-      newChild.css({
-        position: 'absolute',
+      newWormholeElement.css({
+        position: "absolute",
         top: offset.top,
         left: offset.left,
-        bottom: '',
-        right: '',
-        margin: '0px',
-        transform: ''
+        bottom: "",
+        right: "",
+        margin: "0px",
+        transform: ""
       });
 
-      newChild.appendTo(newWormholeElement.parent());
-      this.newElement = newChild;
+      this.newElement = newWormholeElement;
     }
   }
 
   var animation;
-  if (typeof use.handler === 'function') {
+  if (typeof use.handler === "function") {
     animation = use.handler;
   } else {
     animation = context.lookup(use.name);
   }
 
-  return animation.apply(this, use.args).finally(() => {
-    if (this.oldElement && oldWormholeElement) {
-      this.oldElement.remove();
-      oldWormholeElement.css({ visibility: 'visible' });
-      oldWormholeElement.find('.liquid-child').css({ visibility: 'visible' });
-    }
-    if (this.newElement && newWormholeElement) {
-      this.newElement.remove();
-      newWormholeElement.css({ visibility: 'visible' });
-      newWormholeElement.find('.liquid-child').css({ visibility: 'visible' });
-    }
-  });
+  return animation.apply(this, use.args);
 }
