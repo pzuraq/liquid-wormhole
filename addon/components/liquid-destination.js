@@ -65,11 +65,13 @@ export default Component.extend({
     const stack = this.stackMap.get(stackName);
     const item = stack.find(item => item && item.wormhole === wormhole);
 
-    const newNodes = item.get('nodes').clone();
-    item.set('nodes', newNodes);
-    item.set('_replaceNodes', true);
+    next(() => {
+      const newNodes = item.get('nodes').clone();
+      item.set('nodes', newNodes);
+      item.set('_replaceNodes', true);
 
-    next(() => stack.removeObject(item));
+      next(() => stack.removeObject(item));
+    });
   },
 
   flushWormholeQueue() {
