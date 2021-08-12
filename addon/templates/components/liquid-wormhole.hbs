@@ -1,21 +1,21 @@
-{{#if hasSend}}
-  {{#if hasBlock}}
+{{#if this.hasSend}}
+  {{#if (has-block)}}
     {{#component
-      send
-      id=wormholeId
-      class=(concat wormholeClass " liquid-wormhole-element") as |details|
+      (ensure-safe-component @send)
+      id=this.wormholeId
+      class=(concat this.wormholeClass " liquid-wormhole-element") as |details|
     }}
       {{yield details}}
     {{/component}}
   {{else}}
     {{component
-      send
-      id=wormholeId
-      class=(concat wormholeClass " liquid-wormhole-element")
+      (ensure-safe-component @send)
+      id=this.wormholeId
+      class=(concat this.wormholeClass " liquid-wormhole-element")
     }}
   {{/if}}
 {{else}}
-  <div id={{wormholeId}} class="{{wormholeClass}} liquid-wormhole-element">
+  <div id={{this.wormholeId}} class="{{this.wormholeClass}} liquid-wormhole-element">
     {{yield}}
   </div>
 {{/if}}

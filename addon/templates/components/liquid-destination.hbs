@@ -1,11 +1,11 @@
-{{#each stacks as |stack|}}
+{{#each this.stacks as |stack|}}
   <div class="liquid-destination-stack">
     <LiquidVersions
       @value={{stack.lastObject}}
       @notify={{this}}
       @renderWhenFalse={{true}}
       @name="liquid-wormhole"
-      @matchContext={{matchContext}}
+      @matchContext={{this.matchContext}}
       @stackName={{stack.name}} as |item|
     >
       <LiquidAppend
