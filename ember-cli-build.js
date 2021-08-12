@@ -8,7 +8,7 @@ module.exports = function() {
     snippetSearchPaths: ['app', 'tests/dummy/app', 'addon'],
     sassOptions: {
       includePaths: [
-        'bower_components/bootstrap-sass/assets/stylesheets',
+        'node_modules/bootstrap-sass/assets/stylesheets',
         'bower_components/flat-ui-sass/vendor/assets/stylesheets'
       ],
       extension: 'scss'
