@@ -6,7 +6,7 @@ export default Component.extend({
 
   actions: {
     sendAction() {
-      const action = this.get('action');
+      const action = this.action;
       if (action) {
         return action(...arguments);
       }

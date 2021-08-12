@@ -1,6 +1,0 @@
-{
-  "name": "liquid-wormhole",
-  "dependencies": {
-    "flat-ui-sass": "~2.1.3"
-  }
-}

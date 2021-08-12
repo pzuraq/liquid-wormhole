@@ -14,7 +14,7 @@ export default Component.extend({
 
   name: 'default',
   liquidWormholeService: service('liquidWormhole'),
-  matchContext: computed(() => {
+  matchContext: computed(function () {
     return { helperName: 'liquid-wormhole' };
   }),
 
@@ -28,16 +28,16 @@ export default Component.extend({
 
     this.wormholeQueue = A();
 
-    const name = this.get('name');
+    const name = this.name;
 
-    this.get('liquidWormholeService').registerDestination(name, this);
+    this.liquidWormholeService.registerDestination(name, this);
   },
 
   willDestroyElement() {
     this._super(...arguments);
 
-    const name = this.get('name');
-    this.get('liquidWormholeService').unregisterDestination(name);
+    const name = this.name;
+    this.liquidWormholeService.unregisterDestination(name);
   },
 
   appendWormhole(wormhole) {
@@ -119,7 +119,7 @@ export default Component.extend({
 
       // Clean empty stacks
       if (value === null) {
-        const stacks = this.get('stacks');
+        const stacks = this.stacks;
         const stackName = view.get('parentView.stackName');
         const stack = this.stackMap.get(stackName);
 

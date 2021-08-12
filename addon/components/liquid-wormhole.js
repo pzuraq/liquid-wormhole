@@ -20,13 +20,13 @@ export default Component.extend({
   value: true,
 
   init() {
-    const wormholeClass = this.get('class');
-    const wormholeId = this.get('stack') || this.get('id');
+    const wormholeClass = this.class;
+    const wormholeId = this.stack || this.id;
 
     this.set('wormholeClass', wormholeClass);
     this.set('wormholeId', wormholeId);
 
-    if (typeOf(this.get('send')) !== 'function') {
+    if (typeOf(this.send) !== 'function') {
       this.set('hasSend', true);
     }
 
@@ -35,8 +35,8 @@ export default Component.extend({
 
   didUpdateAttrs() {
     this._super(...arguments);
-    this.get('liquidWormholeService').removeWormhole(this, this.get('to'));
-    this.get('liquidWormholeService').appendWormhole(this, this.get('to'));
+    this.liquidWormholeService.removeWormhole(this, this.to);
+    this.liquidWormholeService.appendWormhole(this, this.to);
   },
 
   didInsertElement() {
@@ -46,13 +46,13 @@ export default Component.extend({
     this.element.className = 'liquid-wormhole-container';
     this.element.id = '';
 
-    this.get('liquidWormholeService').appendWormhole(this, this.get('to'));
+    this.liquidWormholeService.appendWormhole(this, this.to);
 
     this._super.apply(this, arguments);
   },
 
   willDestroyElement() {
-    this.get('liquidWormholeService').removeWormhole(this, this.get('to'));
+    this.liquidWormholeService.removeWormhole(this, this.to);
 
     this._super.apply(this, arguments);
   }

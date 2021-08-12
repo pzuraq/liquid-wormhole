@@ -1,20 +1,19 @@
 {{#each stacks as |stack|}}
   <div class="liquid-destination-stack">
-    {{#liquid-versions
-      value=stack.lastObject
-      notify=this
-      renderWhenFalse=true
-      name="liquid-wormhole"
-      matchContext=matchContext
-      stackName=stack.name
-
-      as |item|}}
-      {{liquid-append
-        nodes=item.nodes
-        replaceNodes=item._replaceNodes
-        notify=item.wormhole
-        click=item.wormhole.click
-      }}
-    {{/liquid-versions}}
+    <LiquidVersions
+      @value={{stack.lastObject}}
+      @notify={{this}}
+      @renderWhenFalse={{true}}
+      @name="liquid-wormhole"
+      @matchContext={{matchContext}}
+      @stackName={{stack.name}} as |item|
+    >
+      <LiquidAppend
+        @nodes={{item.nodes}}
+        @replaceNodes={{item._replaceNodes}}
+        @notify={{item.wormhole}}
+        @click={{item.wormhole.click}}
+      />
+    </LiquidVersions>
   </div>
 {{/each}}

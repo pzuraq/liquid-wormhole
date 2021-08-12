@@ -1,8 +1,8 @@
-<button {{action "toggleContent"}} data-test-toggle-inner>
+<button data-test-toggle-inner type="button" {{action "toggleContent"}}>
   Toggle Inner Content
 </button>
 
-{{#liquid-wormhole class="blue-box"}}
+<LiquidWormhole @class="blue-box">
   <div id="content-box">
     {{#liquid-if showingOther}}
       <span id="showing-other">Show Other</span>
@@ -10,4 +10,4 @@
       <span id="not-showing-other">Don't Show Other</span>
     {{/liquid-if}}
   </div>
-{{/liquid-wormhole}}
+</LiquidWormhole>
