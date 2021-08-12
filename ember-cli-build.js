@@ -9,7 +9,7 @@ module.exports = function() {
     sassOptions: {
       includePaths: [
         'node_modules/bootstrap-sass/assets/stylesheets',
-        'bower_components/flat-ui-sass/vendor/assets/stylesheets'
+        'vendor/flat-ui-sass/vendor/assets/stylesheets'
       ],
       extension: 'scss'
     }
