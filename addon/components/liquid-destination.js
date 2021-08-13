@@ -1,5 +1,9 @@
 import classic from 'ember-classic-decorator';
-import { classNames, classNameBindings, layout as templateLayout } from '@ember-decorators/component';
+import {
+  classNames,
+  classNameBindings,
+  layout as templateLayout,
+} from '@ember-decorators/component';
 import { inject as service } from '@ember/service';
 import { gt } from '@ember/object/computed';
 import Component from '@ember/component';

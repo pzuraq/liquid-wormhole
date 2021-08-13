@@ -56,13 +56,13 @@ export default class LiquidWormhole extends Component {
 
     this.liquidWormholeService.appendWormhole(this, this.to);
 
-    this._super.apply(this, arguments);
+    super.didInsertElement.apply(this, arguments);
   }
 
   willDestroyElement() {
     super.willDestroyElement(...arguments);
     this.liquidWormholeService.removeWormhole(this, this.to);
 
-    this._super.apply(this, arguments);
+    super.willDestroyElement.apply(this, arguments);
   }
 }
