@@ -1,14 +1,16 @@
+import classic from 'ember-classic-decorator';
 import $ from 'jquery';
 import Service from '@ember/service';
 import { getOwner } from '@ember/application';
 import HashMap from 'perf-primitives/hash-map';
 
-export default Service.extend({
+@classic
+export default class LiquidWormholeService extends Service {
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
 
     this.destination = new HashMap();
-  },
+  }
 
   appendWormhole(wormhole, destinationName = 'default') {
     let destination = this.destination.get(destinationName);
@@ -22,7 +24,7 @@ export default Service.extend({
     }
 
     destination.appendWormhole(wormhole);
-  },
+  }
 
   removeWormhole(wormhole, destinationName = 'default') {
     const destination = this.destination.get(destinationName);
@@ -32,7 +34,7 @@ export default Service.extend({
     }
 
     destination.removeWormhole(wormhole);
-  },
+  }
 
   registerDestination(destinationName, destination) {
     if (this.destination.get(destinationName)) {
@@ -41,15 +43,15 @@ export default Service.extend({
       );
     }
     this.destination.set(destinationName, destination);
-  },
+  }
 
   unregisterDestination(destinationName) {
     this.destination.delete(destinationName);
-  },
+  }
 
   willDestroy() {
     this.removeDefaultDestination();
-  },
+  }
 
   addDefaultDestination() {
     const instance = getOwner(this);
@@ -70,11 +72,11 @@ export default Service.extend({
     this.defaultDestination = destination;
 
     return destination;
-  },
+  }
 
   removeDefaultDestination() {
     if (this.defaultDestination) {
       this.defaultDestination.destroy();
     }
-  },
-});
+  }
+}

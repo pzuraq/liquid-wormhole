@@ -1,10 +1,13 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  showingOther: true,
-  actions: {
-    toggleContent() {
-      this.toggleProperty('showingOther');
-    },
-  },
-});
+@classic
+export default class LiquidFireInWormholeController extends Controller {
+  showingOther = true;
+
+  @action
+  toggleContent() {
+    this.toggleProperty('showingOther');
+  }
+}

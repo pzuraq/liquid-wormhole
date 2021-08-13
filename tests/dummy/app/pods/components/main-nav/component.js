@@ -1,9 +1,12 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
+import { classNames, tagName } from '@ember-decorators/component';
 import Component from '@ember/component';
 
-export default Component.extend({
-  tagName: 'nav',
-  classNames: ['main-nav'],
-
+@classic
+@tagName('nav')
+@classNames('main-nav')
+export default class MainNav extends Component {
   click(event) {
     const target = event?.target;
 
@@ -12,11 +15,10 @@ export default Component.extend({
         this.set('navOpen', false);
       }
     }
-  },
+  }
 
-  actions: {
-    toggleNav() {
-      this.toggleProperty('navOpen');
-    },
-  },
-});
+  @action
+  toggleNav() {
+    this.toggleProperty('navOpen');
+  }
+}

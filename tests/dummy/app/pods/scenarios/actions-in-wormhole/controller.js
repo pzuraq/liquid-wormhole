@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  actions: {
-    toggleWormhole() {
-      this.toggleProperty('hideWormhole');
-    },
-  },
-});
+@classic
+export default class ActionsInWormholeController extends Controller {
+  @action
+  toggleWormhole() {
+    this.toggleProperty('hideWormhole');
+  }
+}

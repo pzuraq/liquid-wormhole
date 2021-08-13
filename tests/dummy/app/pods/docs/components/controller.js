@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  actions: {
-    toggleHello() {
-      this.toggleProperty('showHello');
-    },
-  },
-});
+@classic
+export default class ComponentsController extends Controller {
+  @action
+  toggleHello() {
+    this.toggleProperty('showHello');
+  }
+}

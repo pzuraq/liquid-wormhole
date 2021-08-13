@@ -1,27 +1,34 @@
-import Component from '@ember/component';
-import EmberObject, { computed } from '@ember/object';
-import { gt } from '@ember/object/computed';
-import { scheduleOnce, next } from '@ember/runloop';
+import classic from 'ember-classic-decorator';
+import { classNames, classNameBindings, layout as templateLayout } from '@ember-decorators/component';
 import { inject as service } from '@ember/service';
+import { gt } from '@ember/object/computed';
+import Component from '@ember/component';
+import EmberObject, { action, computed } from '@ember/object';
+import { scheduleOnce, next } from '@ember/runloop';
 import { A } from '@ember/array';
 import HashMap from 'perf-primitives/hash-map';
 import layout from '../templates/components/liquid-destination';
 
-export default Component.extend({
-  layout,
-  classNames: ['liquid-destination'],
-  classNameBindings: ['hasWormholes'],
+@classic
+@templateLayout(layout)
+@classNames('liquid-destination')
+@classNameBindings('hasWormholes')
+export default class LiquidDestination extends Component {
+  name = 'default';
 
-  name: 'default',
-  liquidWormholeService: service('liquidWormhole'),
-  matchContext: computed(function () {
+  @service('liquidWormhole')
+  liquidWormholeService;
+
+  @computed
+  get matchContext() {
     return { helperName: 'liquid-wormhole' };
-  }),
+  }
 
-  hasWormholes: gt('stacks.length', 0),
+  @gt('stacks.length', 0)
+  hasWormholes;
 
   init() {
-    this._super(...arguments);
+    super.init(...arguments);
 
     this.stackMap = new HashMap();
     this.set('stacks', A());
@@ -31,14 +38,14 @@ export default Component.extend({
     const name = this.name;
 
     this.liquidWormholeService.registerDestination(name, this);
-  },
+  }
 
   willDestroyElement() {
-    this._super(...arguments);
+    super.willDestroyElement(...arguments);
 
     const name = this.name;
     this.liquidWormholeService.unregisterDestination(name);
-  },
+  }
 
   appendWormhole(wormhole) {
     // The order that wormholes are rendered in may be different from the order
@@ -59,7 +66,7 @@ export default Component.extend({
     this.wormholeQueue.insertAt(appendIndex + 1, wormhole);
 
     scheduleOnce('afterRender', this, this.flushWormholeQueue);
-  },
+  }
 
   removeWormhole(wormhole) {
     const stackName = wormhole.get('stack');
@@ -71,7 +78,7 @@ export default Component.extend({
     item.set('_replaceNodes', true);
 
     next(() => stack.removeObject(item));
-  },
+  }
 
   flushWormholeQueue() {
     this.wormholeQueue.forEach((wormhole) => {
@@ -92,7 +99,7 @@ export default Component.extend({
     });
 
     this.wormholeQueue.clear();
-  },
+  }
 
   createStack(wormhole) {
     const stackName = wormhole.get('stack');
@@ -104,39 +111,40 @@ export default Component.extend({
     this.stacks.pushObject(stack);
 
     return stack;
-  },
+  }
 
-  actions: {
-    willTransition() {
-      // Do nothing
-    },
+  @action
+  willTransition() {
+    // Do nothing
+  }
 
-    afterChildInsertion() {
-      // Do nothing
-    },
+  @action
+  afterChildInsertion() {
+    // Do nothing
+  }
 
-    afterTransition([{ value, view }]) {
-      if (this.isDestroying || this.isDestroyed) {
-        return;
-      }
+  @action
+  afterTransition([{ value, view }]) {
+    if (this.isDestroying || this.isDestroyed) {
+      return;
+    }
 
-      // If wormholes were made w/o animations, they need to be made visible manually.
-      const liquidWormholeElement = view.element.querySelector(
-        '.liquid-wormhole-element'
-      );
-      if (liquidWormholeElement) {
-        liquidWormholeElement.style.visibility = 'visible';
-      }
+    // If wormholes were made w/o animations, they need to be made visible manually.
+    const liquidWormholeElement = view.element.querySelector(
+      '.liquid-wormhole-element'
+    );
+    if (liquidWormholeElement) {
+      liquidWormholeElement.style.visibility = 'visible';
+    }
 
-      // Clean empty stacks
-      if (value === null) {
-        const stacks = this.stacks;
-        const stackName = view.get('parentView.stackName');
-        const stack = this.stackMap.get(stackName);
+    // Clean empty stacks
+    if (value === null) {
+      const stacks = this.stacks;
+      const stackName = view.get('parentView.stackName');
+      const stack = this.stackMap.get(stackName);
 
-        stacks.removeObject(stack);
-        this.stackMap.delete(stackName);
-      }
-    },
-  },
-});
+      stacks.removeObject(stack);
+      this.stackMap.delete(stackName);
+    }
+  }
+}

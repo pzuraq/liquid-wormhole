@@ -1,19 +1,21 @@
+import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
 import $ from 'jquery';
 
-export default Component.extend({
+@classic
+export default class LiquidAppend extends Component {
   didUpdateAttrs() {
-    this._super();
+    super.didUpdateAttrs();
     if (this.replaceNodes) {
       const nodes = this.nodes;
 
       $(this.element).children().remove();
       $(this.element).append(nodes);
     }
-  },
+  }
 
   didInsertElement() {
-    this._super(...arguments);
+    super.didInsertElement(...arguments);
     const notify = this.notify;
     const nodes = this.nodes;
 
@@ -26,5 +28,5 @@ export default Component.extend({
     if (notify && notify.didAppendNodes) {
       notify.didAppendNodes(this.element);
     }
-  },
-});
+  }
+}

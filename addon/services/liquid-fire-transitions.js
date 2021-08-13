@@ -1,10 +1,12 @@
+import classic from 'ember-classic-decorator';
 import Action from 'liquid-fire/action';
 import RunningTransition from 'liquid-fire/running-transition';
 import TransitionMap from 'liquid-fire/transition-map';
 
 const wormholeActionMap = new WeakMap();
 
-export default TransitionMap.extend({
+@classic
+export default class LiquidFireTransitionsService extends TransitionMap {
   transitionFor(conditions) {
     if (
       (conditions.matchContext &&
@@ -37,7 +39,7 @@ export default TransitionMap.extend({
 
       return new RunningTransition(this, versions, action);
     } else {
-      return this._super(conditions);
+      return super.transitionFor(conditions);
     }
-  },
-});
+  }
+}

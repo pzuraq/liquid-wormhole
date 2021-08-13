@@ -1,9 +1,11 @@
+import classic from 'ember-classic-decorator';
+import { action } from '@ember/object';
 import Controller from '@ember/controller';
 
-export default Controller.extend({
-  actions: {
-    showInner() {
-      this.toggleProperty('showingInner');
-    },
-  },
-});
+@classic
+export default class NestedWormholesController extends Controller {
+  @action
+  showInner() {
+    this.toggleProperty('showingInner');
+  }
+}
