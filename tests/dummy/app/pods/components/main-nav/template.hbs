@@ -13,23 +13,23 @@
       Liquid Wormhole
     </span>
   </div>
-  <div class="navbar-collapse {{unless navOpen "collapse"}}">
+  <div class="navbar-collapse {{unless this.navOpen "collapse"}}">
     <ul class="nav navbar-nav navbar-left">
-      {{#link-to "index" class="nav-item" tagName="li"}}
-        <a>
+      <li>
+        <LinkTo @route="index" class="nav-item">
           Intro
-        </a>
-      {{/link-to}}
-      {{#link-to "docs" class="nav-item" tagName="li"}}
-        <a>
+        </LinkTo>
+      </li>
+      <li>
+        <LinkTo @route="docs" class="nav-item">
           Docs
-        </a>
-      {{/link-to}}
-      {{#link-to "upgrading" class="nav-item" tagName="li"}}
-        <a>
+        </LinkTo>
+      </li>
+      <li>
+        <LinkTo @route="upgrading" class="nav-item">
           Upgrading
-        </a>
-      {{/link-to}}
+        </LinkTo>
+      </li>
     </ul>
     <ul class="nav navbar-nav navbar-right navbar-break">
       <li>

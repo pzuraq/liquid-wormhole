@@ -1,11 +1,31 @@
 <div class="row">
   <div class="col-xs-12 col-sm-3">
     <ul class="nav nav-pills nav-stacked">
-      {{#link-to "docs.index" tagName="li"}}<a>The Basics</a>{{/link-to}}
-      {{#link-to "docs.parameters" tagName="li"}}<a>Parameters</a>{{/link-to}}
-      {{#link-to "docs.stacks" tagName="li"}}<a>Stacks</a>{{/link-to}}
-      {{#link-to "docs.destinations" tagName="li"}}<a>Custom Destinations</a>{{/link-to}}
-      {{#link-to "docs.components" tagName="li"}}<a>Sending Components</a>{{/link-to}}
+      <li>
+        <LinkTo @route="docs.index">
+          The Basics
+        </LinkTo>
+      </li>
+      <li>
+        <LinkTo @route="docs.parameters">
+          Parameters
+        </LinkTo>
+      </li>
+      <li>
+        <LinkTo @route="docs.stacks">
+          Stacks
+        </LinkTo>
+      </li>
+      <li>
+        <LinkTo @route="docs.destinations">
+          Custom Destinations
+        </LinkTo>
+      </li>
+      <li>
+        <LinkTo @route="docs.components">
+          Sending Components
+        </LinkTo>
+      </li>
     </ul>
   </div>
 

@@ -119,10 +119,14 @@ export default Component.extend({
       if (this.isDestroying || this.isDestroyed) {
         return;
       }
+
       // If wormholes were made w/o animations, they need to be made visible manually.
-      this.$(view.element)
-        .find('.liquid-wormhole-element')
-        .css({ visibility: 'visible' });
+      const liquidWormholeElement = view.element.querySelector(
+        '.liquid-wormhole-element'
+      );
+      if (liquidWormholeElement) {
+        liquidWormholeElement.style.visibility = 'visible';
+      }
 
       // Clean empty stacks
       if (value === null) {

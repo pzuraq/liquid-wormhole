@@ -1,4 +1,5 @@
 import Component from '@ember/component';
+import $ from 'jquery';
 
 export default Component.extend({
   didUpdateAttrs() {
@@ -6,8 +7,8 @@ export default Component.extend({
     if (this.replaceNodes) {
       const nodes = this.nodes;
 
-      this.$().children().remove();
-      this.$().append(nodes);
+      $(this.element).children().remove();
+      $(this.element).append(nodes);
     }
   },
 
@@ -20,7 +21,7 @@ export default Component.extend({
       notify.willAppendNodes(this.element);
     }
 
-    this.$().append(nodes);
+    $(this.element).append(nodes);
 
     if (notify && notify.didAppendNodes) {
       notify.didAppendNodes(this.element);

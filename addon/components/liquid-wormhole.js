@@ -5,6 +5,7 @@ import { computed } from '@ember/object';
 import { reads } from '@ember/object/computed';
 import { guidFor } from '@ember/object/internals';
 import layout from '../templates/components/liquid-wormhole';
+import $ from 'jquery';
 
 export default Component.extend({
   layout,
@@ -41,7 +42,7 @@ export default Component.extend({
 
   didInsertElement() {
     this._super(...arguments);
-    const nodes = this.$().children();
+    const nodes = $(this.element).children();
     this.set('nodes', nodes);
 
     this.element.className = 'liquid-wormhole-container';

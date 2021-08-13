@@ -6,11 +6,10 @@ export default Component.extend({
   classNames: ['main-nav'],
 
   click(event) {
-    var $target = $(event.target);
-    var $c = this.$();
+    const target = event?.target;
 
-    if ($target !== $c) {
-      if ($target.closest($c.find('a.nav-item')).length) {
+    if (target !== this.element) {
+      if (target.closest(this.element.querySelector('a.nav-item')).length) {
         this.set('navOpen', false);
       }
     }
