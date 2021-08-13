@@ -1,10 +1,10 @@
-{{liquid-target name="some-target"}}
+<LiquidDestination @name="some-target"/>
 
 <button type="button" {{action "showWormhole"}}>
   Show Wormhole
 </button>
 
-{{#if showWormhole}}
+{{#if this.showWormhole}}
   <LiquidWormhole @to="some-target" @class="blue-box">
     Testing
   </LiquidWormhole>

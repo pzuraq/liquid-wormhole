@@ -1,5 +1,4 @@
 import { click, findAll, visit } from '@ember/test-helpers';
-import { destroyApp } from '../helpers/app-lifecycle';
 import {
   injectTransitionSpies,
   ranTransition,
@@ -21,10 +20,6 @@ module('Acceptance: Demos', function (hooks) {
     // just spy on them to make sure they're being run than to try to
     // observe their behavior more directly.
     injectTransitionSpies(this.owner);
-  });
-
-  hooks.afterEach(function () {
-    destroyApp();
   });
 
   test('destination container is cleaned when empty', async function (assert) {

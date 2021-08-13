@@ -1,5 +1,4 @@
 import { click, findAll, settled, visit } from '@ember/test-helpers';
-import { destroyApp } from '../helpers/app-lifecycle';
 
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
@@ -10,10 +9,6 @@ function visibility(element) {
 
 module('Acceptance: Scenarios', function (hooks) {
   setupApplicationTest(hooks);
-
-  hooks.afterEach(function () {
-    destroyApp();
-  });
 
   test('components are not destroyed until animation has finished', async function (assert) {
     await visit('/scenarios/component-in-wormhole');
