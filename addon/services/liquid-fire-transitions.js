@@ -6,13 +6,17 @@ const wormholeActionMap = new WeakMap();
 
 export default TransitionMap.extend({
   transitionFor(conditions) {
-    if (conditions.matchContext && conditions.matchContext.helperName === 'liquid-wormhole' ||
-      conditions.helperName === 'liquid-wormhole') {
-
+    if (
+      (conditions.matchContext &&
+        conditions.matchContext.helperName === 'liquid-wormhole') ||
+      conditions.helperName === 'liquid-wormhole'
+    ) {
       const versions = conditions.versions;
 
-      conditions.versions = versions.map(version => version.value || version);
-      conditions.parentElement = conditions.parentElement.find('.liquid-wormhole-element');
+      conditions.versions = versions.map((version) => version.value || version);
+      conditions.parentElement = conditions.parentElement.find(
+        '.liquid-wormhole-element'
+      );
       conditions.firstTime = 'no';
 
       const rule = this.constraintsFor(conditions).bestMatch(conditions);

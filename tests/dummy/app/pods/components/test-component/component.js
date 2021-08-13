@@ -10,6 +10,6 @@ export default Component.extend({
       if (action) {
         return action(...arguments);
       }
-    }
-  }
+    },
+  },
 });

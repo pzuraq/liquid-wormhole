@@ -2,6 +2,7 @@ import Component from '@ember/component';
 
 export default Component.extend({
   didUpdateAttrs() {
+    this._super();
     if (this.replaceNodes) {
       const nodes = this.nodes;
 
@@ -11,6 +12,7 @@ export default Component.extend({
   },
 
   didInsertElement() {
+    this._super(...arguments);
     const notify = this.notify;
     const nodes = this.nodes;
 
@@ -23,5 +25,5 @@ export default Component.extend({
     if (notify && notify.didAppendNodes) {
       notify.didAppendNodes(this.element);
     }
-  }
+  },
 });

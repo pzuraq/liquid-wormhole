@@ -12,7 +12,7 @@ export default Component.extend({
   to: reads('destination'),
   liquidWormholeService: service('liquid-wormhole'),
 
-  stack: computed(function() {
+  stack: computed(function () {
     return guidFor(this);
   }),
 
@@ -40,6 +40,7 @@ export default Component.extend({
   },
 
   didInsertElement() {
+    this._super(...arguments);
     const nodes = this.$().children();
     this.set('nodes', nodes);
 
@@ -52,8 +53,9 @@ export default Component.extend({
   },
 
   willDestroyElement() {
+    this._super(...arguments);
     this.liquidWormholeService.removeWormhole(this, this.to);
 
     this._super.apply(this, arguments);
-  }
+  },
 });

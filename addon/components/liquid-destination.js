@@ -48,7 +48,8 @@ export default Component.extend({
     var appendIndex = this.wormholeQueue.get('length') - 1;
 
     for (; appendIndex >= 0; appendIndex--) {
-      const lastWormholeElement = this.wormholeQueue.objectAt(appendIndex).element;
+      const lastWormholeElement =
+        this.wormholeQueue.objectAt(appendIndex).element;
 
       if (!wormhole.element.contains(lastWormholeElement)) {
         break; // break when we find the first wormhole that isn't a parent
@@ -63,7 +64,7 @@ export default Component.extend({
   removeWormhole(wormhole) {
     const stackName = wormhole.get('stack');
     const stack = this.stackMap.get(stackName);
-    const item = stack.find(item => item && item.wormhole === wormhole);
+    const item = stack.find((item) => item && item.wormhole === wormhole);
 
     const newNodes = item.get('nodes').clone();
     item.set('nodes', newNodes);
@@ -83,7 +84,9 @@ export default Component.extend({
       const item = EmberObject.create({ nodes, wormhole, value });
 
       // Reset visibility in case we made them visible, see below
-      nodes.css({ visibility: 'hidden' });
+      for (const node of nodes) {
+        node.style.visibility = 'hidden';
+      }
 
       stack.pushObject(item);
     });
@@ -94,7 +97,7 @@ export default Component.extend({
   createStack(wormhole) {
     const stackName = wormhole.get('stack');
 
-    const stack = A([ null ]);
+    const stack = A([null]);
     stack.set('name', stackName);
 
     this.stackMap.set(stackName, stack);
@@ -113,9 +116,13 @@ export default Component.extend({
     },
 
     afterTransition([{ value, view }]) {
-      if (this.isDestroying || this.isDestroyed) { return; }
+      if (this.isDestroying || this.isDestroyed) {
+        return;
+      }
       // If wormholes were made w/o animations, they need to be made visible manually.
-      this.$(view.element).find('.liquid-wormhole-element').css({ visibility: 'visible' });
+      this.$(view.element)
+        .find('.liquid-wormhole-element')
+        .css({ visibility: 'visible' });
 
       // Clean empty stacks
       if (value === null) {
@@ -126,6 +133,6 @@ export default Component.extend({
         stacks.removeObject(stack);
         this.stackMap.delete(stackName);
       }
-    }
-  }
+    },
+  },
 });

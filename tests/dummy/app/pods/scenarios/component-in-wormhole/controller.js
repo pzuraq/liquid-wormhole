@@ -4,6 +4,6 @@ export default Controller.extend({
   actions: {
     toggleWormhole() {
       this.toggleProperty('hideWormhole');
-    }
-  }
+    },
+  },
 });

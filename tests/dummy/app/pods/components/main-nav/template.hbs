@@ -1,20 +1,34 @@
-<nav class="navbar navbar-inverse navbar-embossed" role="navigation">
+<nav class="navbar navbar-inverse navbar-embossed">
   <div class="navbar-header">
-    <button type="button" {{action "toggleNav"}} class="navbar-toggle fa fa-bars">
-      <span class="sr-only">Toggle navigation</span>
+    <button
+      type="button"
+      class="navbar-toggle fa fa-bars"
+      {{action "toggleNav"}}
+    >
+      <span class="sr-only">
+        Toggle navigation
+      </span>
     </button>
-    <span class="navbar-brand">Liquid Wormhole</span>
+    <span class="navbar-brand">
+      Liquid Wormhole
+    </span>
   </div>
   <div class="navbar-collapse {{unless navOpen "collapse"}}">
     <ul class="nav navbar-nav navbar-left">
       {{#link-to "index" class="nav-item" tagName="li"}}
-        <a>Intro</a>
+        <a>
+          Intro
+        </a>
       {{/link-to}}
       {{#link-to "docs" class="nav-item" tagName="li"}}
-        <a>Docs</a>
+        <a>
+          Docs
+        </a>
       {{/link-to}}
       {{#link-to "upgrading" class="nav-item" tagName="li"}}
-        <a>Upgrading</a>
+        <a>
+          Upgrading
+        </a>
       {{/link-to}}
     </ul>
     <ul class="nav navbar-nav navbar-right navbar-break">

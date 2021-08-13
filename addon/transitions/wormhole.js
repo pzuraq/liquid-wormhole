@@ -5,14 +5,14 @@ let deduplicateChildElementIds = (parentElem) => {
     return;
   }
 
-  let childrenWithUniqueIds = parentElem[0].querySelectorAll('[id]')
+  let childrenWithUniqueIds = parentElem[0].querySelectorAll('[id]');
 
   if (childrenWithUniqueIds.length) {
     for (let el of childrenWithUniqueIds) {
       el.setAttribute('id', `${guidFor(el)}-${el.id}`);
     }
   }
-}
+};
 
 export default function wormhole(context) {
   let { use } = context;
@@ -20,7 +20,9 @@ export default function wormhole(context) {
   let oldWormholeElement, newWormholeElement;
 
   if (this.oldElement) {
-    oldWormholeElement = this.oldElement.find('.liquid-wormhole-element:last-child');
+    oldWormholeElement = this.oldElement.find(
+      '.liquid-wormhole-element:last-child'
+    );
 
     this.oldElement = null;
 
@@ -42,7 +44,7 @@ export default function wormhole(context) {
         bottom: '',
         right: '',
         margin: '0px',
-        transform: ''
+        transform: '',
       });
 
       newChild.appendTo(oldWormholeElement.parent());
@@ -51,7 +53,9 @@ export default function wormhole(context) {
   }
 
   if (this.newElement) {
-    newWormholeElement = this.newElement.find('.liquid-wormhole-element:last-child');
+    newWormholeElement = this.newElement.find(
+      '.liquid-wormhole-element:last-child'
+    );
 
     this.newElement = null;
 
@@ -72,7 +76,7 @@ export default function wormhole(context) {
         bottom: '',
         right: '',
         margin: '0px',
-        transform: ''
+        transform: '',
       });
 
       newChild.appendTo(newWormholeElement.parent());
