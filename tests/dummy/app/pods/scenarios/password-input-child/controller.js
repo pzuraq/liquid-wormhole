@@ -1,11 +1,13 @@
-import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
-import Controller from '@ember/controller';
 
-@classic
+import Controller from '@ember/controller';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+
 export default class PasswordInputChildController extends Controller {
+  @tracked hideWormhole = false;
+
   @action
   toggleWormhole() {
-    this.toggleProperty('hideWormhole');
+    this.hideWormhole = !this.hideWormhole;
   }
 }

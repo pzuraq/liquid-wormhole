@@ -1,11 +1,12 @@
-import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
 import Controller from '@ember/controller';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-@classic
 export default class NestedWormholesController extends Controller {
+  @tracked showingInner = false;
+
   @action
   showInner() {
-    this.toggleProperty('showingInner');
+    this.showingInner = !this.showingInner;
   }
 }

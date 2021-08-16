@@ -1,11 +1,12 @@
-import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
 import Controller from '@ember/controller';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-@classic
 export default class ComponentsController extends Controller {
+  @tracked showHello = false;
+
   @action
   toggleHello() {
-    this.toggleProperty('showHello');
+    this.showHello = !this.showHello;
   }
 }

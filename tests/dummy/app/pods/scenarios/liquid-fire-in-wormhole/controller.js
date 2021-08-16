@@ -1,13 +1,12 @@
-import classic from 'ember-classic-decorator';
-import { action } from '@ember/object';
 import Controller from '@ember/controller';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
 
-@classic
 export default class LiquidFireInWormholeController extends Controller {
-  showingOther = true;
+  @tracked showingOther = true;
 
   @action
   toggleContent() {
-    this.toggleProperty('showingOther');
+    this.showingOther = !this.showingOther;
   }
 }
