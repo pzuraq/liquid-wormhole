@@ -1,21 +1,21 @@
 If you don't want to use Liquid Wormhole for modals, or need to have more fine
-grained control of your wormholes, you can create a custom `liquid-destination`. By
-default all `liquid-wormhole`s are rendered to the `default` destination. You can
+grained control of your wormholes, you can create a custom `LiquidDestination`. By
+default all `LiquidWormhole`s are rendered to the `default` destination. You can
 replace this destination, or create a new one and send wormholes to it using the `to`
 property:
 
 ```
-<!-- Replaces the default liquid-destination -->
-{{liquid-destination}}
+<!-- Replaces the default LiquidDestination -->
+<LiquidDestination/>
 
-<!-- Adds a new liquid-destination named "my-destination" -->
-{{liquid-destination name="my-destination"}}
+<!-- Adds a new LiquidDestination named "my-destination" -->
+<LiquidDestination @name="my-destination"/>
 
 ...
 
 <!-- Appends to the default destination above -->
-{{liquid-wormhole}}
+<LiquidWormhole/>
 
 <!-- Appends to the named destination above -->
-{{liquid-wormhole to="my-destination"}}
+<LiquidWormhole @to="my-destination"/>
 ```

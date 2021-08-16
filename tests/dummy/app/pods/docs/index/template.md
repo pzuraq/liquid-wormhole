@@ -13,25 +13,25 @@ If you want to warp elements somewhere else, consider
 {{#link-to "docs.destinations"}}creating a custom liquid-destination{{/link-to}}
 
 <div class="example-button-container">
-  <button {{action 'toggleHello'}} id="hello-world-button" class="btn btn-primary btn-embossed">
+  <button {{on "click" this.toggleHello}} id="hello-world-button" class="btn btn-primary btn-embossed">
     Give it a shot!
   </button>
-  {{#if showHello}}
-    {{#liquid-wormhole class="hello-world notification top-right"}}
+  {{#if this.showHello}}
+    <LiquidWormhole @class="hello-world notification top-right">
       Hello, World!
-    {{/liquid-wormhole}}
+    </LiquidWormhole>
   {{/if}}
 </div>
 
 ```hbs
-<button {{action 'toggleHello'}}>
+<button {{on "click" this.toggleHello}}>
   Give it a shot!
 </button>
 
-{{#if showHello}}
-  {{#liquid-wormhole class="hello-world top-right"}}
+{{#if this.showHello}}
+  <LiquidWormhole @class="hello-world top-right">
     Hello, World!
-  {{/liquid-wormhole}}
+  </LiquidWormhole>
 {{/if}}
 ```
 

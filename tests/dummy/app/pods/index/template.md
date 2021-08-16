@@ -4,20 +4,20 @@
   </span>
 </div>
 <div class="front-page-container-2">
-  <button {{action 'toggleHello'}} id="hello-world-button" class="btn btn-primary btn-embossed">
+  <button {{on "click" this.toggleHello}} id="hello-world-button" class="btn btn-primary btn-embossed">
     Give it a shot!
   </button>
-  {{#if showHello}}
-    {{#liquid-wormhole class="hello-world notification"}}
+  {{#if this.showHello}}
+    <LiquidWormhole @class="hello-world notification">
       Hello, World!
-    {{/liquid-wormhole}}
+    </LiquidWormhole>
   {{/if}}
 </div>
 
 ```
-{{#liquid-wormhole class="hello-world"}}
+<LiquidWormhole @class="hello-world">
   Hello, World!
-{{/liquid-wormhole}}
+</LiquidWormhole>
 ```
 
 ```
