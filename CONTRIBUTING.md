@@ -3,8 +3,8 @@
 ## Installation
 
 * `git clone <repository-url>`
-* `cd my-addon`
-* `yarn`
+* `cd liquid-wormhole`
+* `yarn install`
 
 ## Linting
 
