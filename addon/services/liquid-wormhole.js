@@ -1,17 +1,21 @@
-import classic from 'ember-classic-decorator';
 import $ from 'jquery';
 import Service from '@ember/service';
+import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import HashMap from 'perf-primitives/hash-map';
 
-@classic
 export default class LiquidWormholeService extends Service {
-  init() {
-    super.init(...arguments);
+  constructor() {
+    super(...arguments);
 
     this.destination = new HashMap();
   }
 
+  willDestroy() {
+    this.removeDefaultDestination();
+  }
+
+  @action
   appendWormhole(wormhole, destinationName = 'default') {
     let destination = this.destination.get(destinationName);
 
@@ -26,6 +30,7 @@ export default class LiquidWormholeService extends Service {
     destination.appendWormhole(wormhole);
   }
 
+  @action
   removeWormhole(wormhole, destinationName = 'default') {
     const destination = this.destination.get(destinationName);
 
@@ -36,6 +41,7 @@ export default class LiquidWormholeService extends Service {
     destination.removeWormhole(wormhole);
   }
 
+  @action
   registerDestination(destinationName, destination) {
     if (this.destination.get(destinationName)) {
       throw new Error(
@@ -45,21 +51,16 @@ export default class LiquidWormholeService extends Service {
     this.destination.set(destinationName, destination);
   }
 
+  @action
   unregisterDestination(destinationName) {
     this.destination.delete(destinationName);
   }
 
-  willDestroy() {
-    this.removeDefaultDestination();
-  }
-
+  @action
   addDefaultDestination() {
     const instance = getOwner(this);
     const destination = instance.lookup('component:liquid-destination');
-    destination.set('classNames', [
-      'liquid-destination',
-      'default-liquid-destination',
-    ]);
+    destination.set('extraClassesString', 'default-liquid-destination');
 
     if (instance.rootElement) {
       destination.appendTo(instance.rootElement);
@@ -74,6 +75,7 @@ export default class LiquidWormholeService extends Service {
     return destination;
   }
 
+  @action
   removeDefaultDestination() {
     if (this.defaultDestination) {
       this.defaultDestination.destroy();

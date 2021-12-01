@@ -1,3 +1,4 @@
+/* eslint-disable ember/require-tagless-components */
 import classic from 'ember-classic-decorator';
 import { layout as templateLayout } from '@ember-decorators/component';
 import { computed } from '@ember/object';

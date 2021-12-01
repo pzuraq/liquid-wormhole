@@ -1,41 +1,34 @@
-import classic from 'ember-classic-decorator';
-import {
-  classNames,
-  classNameBindings,
-  layout as templateLayout,
-} from '@ember-decorators/component';
+/* eslint-disable ember/no-computed-properties-in-native-classes */
+import { layout as templateLayout, tagName } from '@ember-decorators/component';
 import { inject as service } from '@ember/service';
 import { gt } from '@ember/object/computed';
 import Component from '@ember/component';
-import EmberObject, { action, computed } from '@ember/object';
+import EmberObject, { action, computed, set } from '@ember/object';
 import { scheduleOnce, next } from '@ember/runloop';
 import { A } from '@ember/array';
 import HashMap from 'perf-primitives/hash-map';
 import layout from '../templates/components/liquid-destination';
 
-@classic
 @templateLayout(layout)
-@classNames('liquid-destination')
-@classNameBindings('hasWormholes')
+@tagName('')
 export default class LiquidDestination extends Component {
+  extraClassesString = '';
   name = 'default';
 
-  @service('liquidWormhole')
-  liquidWormholeService;
+  @service('liquidWormhole') liquidWormholeService;
 
   @computed
   get matchContext() {
     return { helperName: 'liquid-wormhole' };
   }
 
-  @gt('stacks.length', 0)
-  hasWormholes;
+  @gt('stacks.length', 0) hasWormholes;
 
-  init() {
-    super.init(...arguments);
+  constructor() {
+    super(...arguments);
 
     this.stackMap = new HashMap();
-    this.set('stacks', A());
+    set(this, 'stacks', A());
 
     this.wormholeQueue = A();
 
@@ -44,8 +37,8 @@ export default class LiquidDestination extends Component {
     this.liquidWormholeService.registerDestination(name, this);
   }
 
-  willDestroyElement() {
-    super.willDestroyElement(...arguments);
+  willDestroy() {
+    super.willDestroy(...arguments);
 
     const name = this.name;
     this.liquidWormholeService.unregisterDestination(name);

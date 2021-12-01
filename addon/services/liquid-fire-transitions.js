@@ -1,11 +1,9 @@
-import classic from 'ember-classic-decorator';
 import Action from 'liquid-fire/action';
 import RunningTransition from 'liquid-fire/running-transition';
 import TransitionMap from 'liquid-fire/transition-map';
 
 const wormholeActionMap = new WeakMap();
 
-@classic
 export default class LiquidFireTransitionsService extends TransitionMap {
   transitionFor(conditions) {
     if (

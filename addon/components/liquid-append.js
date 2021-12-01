@@ -1,32 +1,36 @@
-import classic from 'ember-classic-decorator';
 import Component from '@ember/component';
+import { action } from '@ember/object';
+import { layout as templateLayout, tagName } from '@ember-decorators/component';
+import layout from '../templates/components/liquid-append';
+
 import $ from 'jquery';
 
-@classic
+@tagName('')
+@templateLayout(layout)
 export default class LiquidAppend extends Component {
-  didUpdateAttrs() {
-    super.didUpdateAttrs();
+  @action
+  _didUpdate(element) {
     if (this.replaceNodes) {
       const nodes = this.nodes;
 
-      $(this.element).children().remove();
-      $(this.element).append(nodes);
+      $(element).children().remove();
+      $(element).append(nodes);
     }
   }
 
-  didInsertElement() {
-    super.didInsertElement(...arguments);
+  @action
+  _didInsert(element) {
     const notify = this.notify;
     const nodes = this.nodes;
 
     if (notify && notify.willAppendNodes) {
-      notify.willAppendNodes(this.element);
+      notify.willAppendNodes(element);
     }
 
-    $(this.element).append(nodes);
+    $(element).append(nodes);
 
     if (notify && notify.didAppendNodes) {
-      notify.didAppendNodes(this.element);
+      notify.didAppendNodes(element);
     }
   }
 }
