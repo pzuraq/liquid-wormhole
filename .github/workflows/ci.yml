@@ -53,11 +53,11 @@ jobs:
           - ember-lts-3.20
           - ember-lts-3.24
           - ember-release
+          - ember-release-no-deprecations
           - ember-beta
           - ember-canary
           - ember-classic
           - ember-default-with-jquery
-          - no-deprecations
           - embroider-safe
           - embroider-optimized
 
