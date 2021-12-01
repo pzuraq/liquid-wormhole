@@ -57,6 +57,7 @@ jobs:
           - ember-canary
           - ember-classic
           - ember-default-with-jquery
+          - no-deprecations
           - embroider-safe
           - embroider-optimized
 
