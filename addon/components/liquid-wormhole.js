@@ -1,7 +1,7 @@
+/* eslint-disable ember/no-computed-properties-in-native-classes */
 /* eslint-disable ember/require-tagless-components */
-import classic from 'ember-classic-decorator';
 import { layout as templateLayout } from '@ember-decorators/component';
-import { computed } from '@ember/object';
+import { computed, set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { reads } from '@ember/object/computed';
 import Component from '@ember/component';
@@ -10,7 +10,6 @@ import { guidFor } from '@ember/object/internals';
 import layout from '../templates/components/liquid-wormhole';
 import $ from 'jquery';
 
-@classic
 @templateLayout(layout)
 export default class LiquidWormhole extends Component {
   @reads('destination')
@@ -27,15 +26,16 @@ export default class LiquidWormhole extends Component {
   // Truthy value by default
   value = true;
 
+  // eslint-disable-next-line ember/classic-decorator-hooks
   init() {
     const wormholeClass = this.class;
     const wormholeId = this.stack || this.id;
 
-    this.set('wormholeClass', wormholeClass);
-    this.set('wormholeId', wormholeId);
+    set(this, 'wormholeClass', wormholeClass);
+    set(this, 'wormholeId', wormholeId);
 
     if (typeOf(this.send) !== 'function') {
-      this.set('hasSend', true);
+      set(this, 'hasSend', true);
     }
 
     super.init(...arguments);
@@ -50,7 +50,7 @@ export default class LiquidWormhole extends Component {
   didInsertElement() {
     super.didInsertElement(...arguments);
     const nodes = $(this.element).children();
-    this.set('nodes', nodes);
+    set(this, 'nodes', nodes);
 
     this.element.className = 'liquid-wormhole-container';
     this.element.id = '';
