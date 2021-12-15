@@ -31,6 +31,7 @@
     "ember-cli-babel": "^7.26.6",
     "ember-cli-htmlbars": "^5.7.1",
     "ember-decorators": "^6.1.1",
+    "liquid-fire": "ember-animation/liquid-fire#298edc265a98bee69ad6b017221b6217e0c2e2c4",
     "perf-primitives": "rwwagner90/perf-primitives#a6a26f11497ca27be3763a88a5f20744e424756b"
   },
   "devDependencies": {
@@ -67,7 +68,6 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-qunit": "^7.0.0",
-    "liquid-fire": "ember-animation/liquid-fire#fb2539af040cc49799f0b0bff70c82edefad0a71",
     "loader.js": "^4.7.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.0",
