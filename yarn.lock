@@ -1142,12 +1142,12 @@
     resolve "^1.20.0"
     semver "^7.3.2"
 
-"@embroider/macros@^0.48.1":
-  version "0.48.1"
-  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-0.48.1.tgz#fc1fd10857d40e80a20c0d366a1a8007aa424e83"
-  integrity sha512-JtcOL3pSxI8prstQomzNNHPBqG1K5JwrIuZwH+Q9TK4nONIH2F4z0Z0pd0SZmTEjF17E4gZN3g1J3vSX4zKuww==
+"@embroider/macros@^0.47.0":
+  version "0.47.2"
+  resolved "https://registry.yarnpkg.com/@embroider/macros/-/macros-0.47.2.tgz#23cbe92cac3c24747f054e1eea2a22538bf7ebd0"
+  integrity sha512-ViNWluJCeM5OPlM3rs8kdOz3RV5rpfXX5D2rDnc/q86xRS0xf4NFEjYRV7W6fBcD0b3v5jSHDTwrjq9Kee4rHg==
   dependencies:
-    "@embroider/shared-internals" "0.48.1"
+    "@embroider/shared-internals" "0.47.2"
     assert-never "^1.2.1"
     ember-cli-babel "^7.26.6"
     find-up "^5.0.0"
@@ -1155,10 +1155,10 @@
     resolve "^1.20.0"
     semver "^7.3.2"
 
-"@embroider/shared-internals@0.48.1":
-  version "0.48.1"
-  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-0.48.1.tgz#4f0dcde8dba2fa47c862746898a1846a31e27f80"
-  integrity sha512-6Q73QXGUQianIb3xRpMNl8VMECSatA1NhjXxeIyYzwKraWhhMBpXvysLpbJ8ib1rQe1ajmkoDdXgT5pAnVMXrg==
+"@embroider/shared-internals@0.47.2":
+  version "0.47.2"
+  resolved "https://registry.yarnpkg.com/@embroider/shared-internals/-/shared-internals-0.47.2.tgz#24e9fa0dd9c529d5c996ee1325729ea08d1fa19f"
+  integrity sha512-SxdZYjAE0fiM5zGDz+12euWIsQZ1tsfR1k+NKmiWMyLhA5T3pNgbR2/Djvx/cVIxOtEavGGSllYbzRKBtV4xMg==
   dependencies:
     babel-import-util "^0.2.0"
     ember-rfc176-data "^0.3.17"
@@ -4757,7 +4757,7 @@ ember-auto-import@^1.11.3:
     walk-sync "^0.3.3"
     webpack "^4.43.0"
 
-ember-auto-import@^2.2.0, ember-auto-import@^2.2.3, ember-auto-import@^2.2.4:
+ember-auto-import@^2.2.0, ember-auto-import@^2.2.4:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/ember-auto-import/-/ember-auto-import-2.2.4.tgz#68c08cb0b7533293024c97387fc449b00561185a"
   integrity sha512-iXHH+bSMP/uWvJmIhjt+PZz4ymqOLccIxZUouVcUFLKA5EAWE7gamlA684m0pIbSE/V9zKpOul4OfIgKXFprBg==
@@ -7703,7 +7703,7 @@ jest-worker@^27.4.1:
     merge-stream "^2.0.0"
     supports-color "^8.0.0"
 
-jquery@^3.5.0, jquery@^3.6.0:
+jquery@^3.5.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
   integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
@@ -7989,23 +7989,20 @@ linkify-it@^3.0.1:
   dependencies:
     uc.micro "^1.0.1"
 
-liquid-fire@ember-animation/liquid-fire#298edc265a98bee69ad6b017221b6217e0c2e2c4:
+liquid-fire@^0.33.0:
   version "0.33.0"
-  resolved "https://codeload.github.com/ember-animation/liquid-fire/tar.gz/298edc265a98bee69ad6b017221b6217e0c2e2c4"
+  resolved "https://registry.yarnpkg.com/liquid-fire/-/liquid-fire-0.33.0.tgz#61a49f40a2bd9f2b2f9e41ac6b965f4235fae25a"
+  integrity sha512-kU/M2uSm72f5MLxp/R07mXPFhtvmuOAjOs2kka5Mw70gb2e1kj756m+UIhmW1HgWgHBcsCNju1a8L/L5liySmw==
   dependencies:
-    "@ember/jquery" "^2.0.0"
-    "@embroider/macros" "^0.48.1"
+    "@embroider/macros" "^0.47.0"
     broccoli-funnel "^3.0.8"
     broccoli-merge-trees "^4.2.0"
     broccoli-stew "^3.0.0"
     broccoli-string-replace "^0.1.2"
-    ember-auto-import "^2.2.3"
     ember-cli-babel "^7.26.6"
     ember-cli-htmlbars "^5.7.1"
     ember-cli-version-checker "^5.1.2"
-    jquery "^3.6.0"
     match-media "^0.2.0"
-    rsvp "^4.8.5"
     velocity-animate "^1.5.2"
 
 livereload-js@^3.3.1:
