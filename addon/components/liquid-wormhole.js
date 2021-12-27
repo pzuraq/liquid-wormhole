@@ -3,6 +3,8 @@ import { layout as templateLayout } from '@ember-decorators/component';
 import { set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
+import { tracked } from '@glimmer/tracking';
+import { typeOf } from '@ember/utils';
 import { guidFor } from '@ember/object/internals';
 import { ensureSafeComponent } from '@embroider/util';
 import layout from '../templates/components/liquid-wormhole';
@@ -12,6 +14,7 @@ import $ from 'jquery';
 export default class LiquidWormhole extends Component {
   @service('liquid-wormhole') liquidWormholeService;
 
+  @tracked hasSend = false;
   // Truthy value by default
   value = true;
 
@@ -35,6 +38,10 @@ export default class LiquidWormhole extends Component {
     set(this, 'stack', guidFor(this));
     set(this, 'wormholeClass', wormholeClass);
     set(this, 'wormholeId', wormholeId);
+
+    if (typeOf(this.send) !== 'function') {
+      set(this, 'hasSend', true);
+    }
 
     super.init(...arguments);
   }

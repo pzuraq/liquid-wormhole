@@ -10,7 +10,7 @@ document flow. When choosing and building your animations, it's helpful to
 think as though you are animating the entire window frame at once.
 
 If you want to warp elements somewhere else, consider
-{{#link-to "docs.destinations"}}creating a custom liquid-destination{{/link-to}}
+<a href="/docs/destinations">creating a custom liquid-destination</a>
 
 <div class="example-button-container">
   <button {{on "click" this.toggleHello}} id="hello-world-button" class="btn btn-primary btn-embossed">
