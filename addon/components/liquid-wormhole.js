@@ -3,7 +3,6 @@ import { layout as templateLayout } from '@ember-decorators/component';
 import { set } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Component from '@ember/component';
-import { typeOf } from '@ember/utils';
 import { guidFor } from '@ember/object/internals';
 import { ensureSafeComponent } from '@embroider/util';
 import layout from '../templates/components/liquid-wormhole';
