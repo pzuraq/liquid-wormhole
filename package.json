@@ -34,7 +34,6 @@
     "ember-cli-babel": "^7.26.8",
     "ember-cli-htmlbars": "^6.0.1",
     "ember-decorators": "^6.1.1",
-    "liquid-fire": "ember-animation/liquid-fire#298edc265a98bee69ad6b017221b6217e0c2e2c4",
     "perf-primitives": "rwwagner90/perf-primitives#a6a26f11497ca27be3763a88a5f20744e424756b"
   },
   "devDependencies": {
@@ -58,7 +57,7 @@
     "ember-load-initializers": "^2.1.2",
     "ember-qunit": "^5.1.5",
     "ember-resolver": "^8.0.3",
-    "ember-source": "~3.28.8",
+    "ember-source": "~4.0.1",
     "ember-source-channel-url": "^3.0.0",
     "ember-template-lint": "^3.15.0",
     "ember-try": "^2.0.0",
@@ -77,6 +76,9 @@
     "release-it-lerna-changelog": "^4.0.1",
     "sass": "^1.45.1",
     "webpack": "^5.65.0"
+  },
+  "peerDependencies": {
+    "liquid-fire": "^0.33.0"
   },
   "engines": {
     "node": "12.* || 14.* || >= 16"
