@@ -1,9 +1,7 @@
-/* eslint-disable ember/no-computed-properties-in-native-classes */
 /* eslint-disable ember/require-tagless-components */
 import { layout as templateLayout } from '@ember-decorators/component';
-import { computed, set } from '@ember/object';
+import { set } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { reads } from '@ember/object/computed';
 import Component from '@ember/component';
 import { typeOf } from '@ember/utils';
 import { guidFor } from '@ember/object/internals';
@@ -12,25 +10,21 @@ import $ from 'jquery';
 
 @templateLayout(layout)
 export default class LiquidWormhole extends Component {
-  @reads('destination')
-  to;
-
-  @service('liquid-wormhole')
-  liquidWormholeService;
-
-  @computed
-  get stack() {
-    return guidFor(this);
-  }
+  @service('liquid-wormhole') liquidWormholeService;
 
   // Truthy value by default
   value = true;
+
+  get to() {
+    return this.destination;
+  }
 
   // eslint-disable-next-line ember/classic-decorator-hooks
   init() {
     const wormholeClass = this.class;
     const wormholeId = this.stack || this.id;
 
+    set(this, 'stack', guidFor(this));
     set(this, 'wormholeClass', wormholeClass);
     set(this, 'wormholeId', wormholeId);
 

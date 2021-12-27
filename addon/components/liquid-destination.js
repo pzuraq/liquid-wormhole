@@ -3,7 +3,7 @@ import { layout as templateLayout, tagName } from '@ember-decorators/component';
 import { inject as service } from '@ember/service';
 import { gt } from '@ember/object/computed';
 import Component from '@ember/component';
-import EmberObject, { action, computed, set } from '@ember/object';
+import EmberObject, { action, set } from '@ember/object';
 import { scheduleOnce, next } from '@ember/runloop';
 import { A } from '@ember/array';
 import HashMap from 'perf-primitives/hash-map';
@@ -12,15 +12,10 @@ import layout from '../templates/components/liquid-destination';
 @templateLayout(layout)
 @tagName('')
 export default class LiquidDestination extends Component {
-  extraClassesString = '';
-  name = 'default';
-
   @service('liquidWormhole') liquidWormholeService;
 
-  @computed
-  get matchContext() {
-    return { helperName: 'liquid-wormhole' };
-  }
+  extraClassesString = '';
+  name = 'default';
 
   @gt('stacks.length', 0) hasWormholes;
 
@@ -28,6 +23,7 @@ export default class LiquidDestination extends Component {
     super(...arguments);
 
     this.stackMap = new HashMap();
+    set(this, 'matchContext', { helperName: 'liquid-wormhole' });
     set(this, 'stacks', A());
 
     this.wormholeQueue = A();
