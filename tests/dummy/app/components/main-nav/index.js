@@ -9,7 +9,7 @@ export default class MainNav extends Component {
     const target = event?.target;
 
     if (target !== this.element) {
-      if (target.closest('a.nav-item')) {
+      if (target.closest(this.element.querySelector('a.nav-item')).length) {
         this.navOpen = false;
       }
     }
