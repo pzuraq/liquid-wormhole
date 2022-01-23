@@ -1,12 +1,24 @@
-<button data-test-toggle-wormhole type="button" {{action "toggleWormhole"}}>Toggle Wormhole</button>
+<button
+  data-test-toggle-wormhole
+  type='button'
+  {{on 'click' this.toggleWormhole}}
+>
+  Toggle Wormhole
+</button>
 
-{{#unless hideWormhole}}
-  <LiquidWormhole @class="blue-box">
+{{#unless this.hideWormhole}}
+  <LiquidWormhole @class='blue-box'>
     <form>
-      <input type="text" autocomplete="username" placeholder="John Doe">
-      <input id="my-password-input" type="password" autocomplete="current-password">
-      <input id="my-text-input" type="text">
-      <button id="my-button" type="button">Submit</button>
+      <input type='text' autocomplete='username' placeholder='John Doe' />
+      <input
+        id='my-password-input'
+        type='password'
+        autocomplete='current-password'
+      />
+      <input id='my-text-input' type='text' />
+      <button id='my-button' type='button'>
+        Submit
+      </button>
     </form>
   </LiquidWormhole>
 {{/unless}}

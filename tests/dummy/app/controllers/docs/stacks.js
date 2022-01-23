@@ -13,6 +13,6 @@ export default Controller.extend({
     closeModal() {
       this.toggleProperty('showFirstStep');
       this.toggleProperty('showSecondStep');
-    }
-  }
+    },
+  },
 });

@@ -1,59 +1,74 @@
-import Component from '@ember/component';
-import { typeOf } from '@ember/utils';
+/* eslint-disable ember/require-tagless-components */
+import { layout as templateLayout } from '@ember-decorators/component';
+import { set } from '@ember/object';
 import { inject as service } from '@ember/service';
-import { computed } from '@ember/object';
-import { reads } from '@ember/object/computed';
+import Component from '@ember/component';
+import { tracked } from '@glimmer/tracking';
+import { typeOf } from '@ember/utils';
 import { guidFor } from '@ember/object/internals';
+import { ensureSafeComponent } from '@embroider/util';
 import layout from '../templates/components/liquid-wormhole';
+import $ from 'jquery';
 
-export default Component.extend({
-  layout,
+@templateLayout(layout)
+export default class LiquidWormhole extends Component {
+  @service('liquid-wormhole') liquidWormholeService;
 
-  to: reads('destination'),
-  liquidWormholeService: service('liquid-wormhole'),
-
-  stack: computed(function() {
-    return guidFor(this);
-  }),
-
+  @tracked hasSend = false;
   // Truthy value by default
-  value: true,
+  value = true;
 
+  get sendComponent() {
+    if (this.send) {
+      return ensureSafeComponent(this.send, this);
+    }
+
+    return null;
+  }
+
+  get to() {
+    return this.destination;
+  }
+
+  // eslint-disable-next-line ember/classic-decorator-hooks
   init() {
     const wormholeClass = this.class;
     const wormholeId = this.stack || this.id;
 
-    this.set('wormholeClass', wormholeClass);
-    this.set('wormholeId', wormholeId);
+    set(this, 'stack', guidFor(this));
+    set(this, 'wormholeClass', wormholeClass);
+    set(this, 'wormholeId', wormholeId);
 
     if (typeOf(this.send) !== 'function') {
-      this.set('hasSend', true);
+      set(this, 'hasSend', true);
     }
 
-    this._super(...arguments);
-  },
+    super.init(...arguments);
+  }
 
   didUpdateAttrs() {
-    this._super(...arguments);
+    super.didUpdateAttrs(...arguments);
     this.liquidWormholeService.removeWormhole(this, this.to);
     this.liquidWormholeService.appendWormhole(this, this.to);
-  },
+  }
 
   didInsertElement() {
-    const nodes = this.$().children();
-    this.set('nodes', nodes);
+    super.didInsertElement(...arguments);
+    const nodes = $(this.element).children();
+    set(this, 'nodes', nodes);
 
     this.element.className = 'liquid-wormhole-container';
     this.element.id = '';
 
     this.liquidWormholeService.appendWormhole(this, this.to);
 
-    this._super.apply(this, arguments);
-  },
+    super.didInsertElement.apply(this, arguments);
+  }
 
   willDestroyElement() {
+    super.willDestroyElement(...arguments);
     this.liquidWormholeService.removeWormhole(this, this.to);
 
-    this._super.apply(this, arguments);
+    super.willDestroyElement.apply(this, arguments);
   }
-});
+}

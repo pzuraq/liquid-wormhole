@@ -1,8 +1,5 @@
-export default function() {
-  this.transition(
-    this.hasClass('red-box'),
-    this.use('fade')
-  );
+export default function () {
+  this.transition(this.hasClass('red-box'), this.use('fade'));
 
   this.transition(
     this.hasClass('hello-world'),
@@ -31,10 +28,7 @@ export default function() {
     this.reverse('to-right', { duration: 2000, easing: [200, 22] })
   );
 
-  this.transition(
-    this.hasClass('modal-backdrop'),
-    this.use('fade')
-  );
+  this.transition(this.hasClass('modal-backdrop'), this.use('fade'));
 
   this.transition(
     this.hasClass('outer-wormhole'),

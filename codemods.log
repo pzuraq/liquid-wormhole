@@ -1,0 +1,26 @@
+2021-08-13T01:54:34.335Z [info] [./tests/dummy/app/pods/docs/components/controller.js]: SUCCESS
+2021-08-13T01:54:34.391Z [warn] [./tests/dummy/app/pods/scenarios/manual-destinations/controller.js]: FAILURE 
+Validation errors: 
+	[showWormhole]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+2021-08-13T01:54:34.400Z [info] [./tests/dummy/app/pods/components/main-nav/component.js]: SUCCESS
+2021-08-13T01:54:34.404Z [warn] [./tests/dummy/app/pods/docs/stacks/controller.js]: FAILURE 
+Validation errors: 
+	[showFirstStep]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+	[showSecondStep]: Transform not supported - calling the passed action would cause an infinite loop. See https://github.com/scalvert/eslint-plugin-ember-es6-class/pull/2 for more details
+2021-08-13T01:54:34.419Z [info] [./tests/dummy/app/pods/index/controller.js]: SUCCESS
+2021-08-13T01:54:34.454Z [info] [./tests/dummy/app/pods/components/test-component/component.js]: SUCCESS
+2021-08-13T01:54:34.494Z [info] [./tests/dummy/app/pods/scenarios/password-input-child/controller.js]: SUCCESS
+2021-08-13T01:54:34.564Z [warn] [./tests/dummy/app/transitions.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2021-08-13T01:54:34.639Z [info] [./tests/dummy/app/pods/scenarios/nested-wormholes/controller.js]: SUCCESS
+2021-08-13T01:54:34.690Z [info] [./tests/dummy/app/pods/components/hello-component/component.js]: SUCCESS
+2021-08-13T01:54:34.694Z [info] [./tests/dummy/app/pods/scenarios/component-in-wormhole/controller.js]: SUCCESS
+2021-08-13T01:54:34.714Z [info] [./tests/dummy/app/pods/scenarios/liquid-fire-in-wormhole/controller.js]: SUCCESS
+2021-08-13T01:54:34.749Z [info] [./tests/dummy/app/pods/scenarios/actions-in-wormhole/controller.js]: SUCCESS
+2021-08-13T01:54:34.750Z [info] [./tests/dummy/app/pods/docs/index/controller.js]: SUCCESS
+2021-08-13T01:54:59.812Z [warn] [./addon/index.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2021-08-13T01:54:59.830Z [info] [./addon/services/liquid-fire-transitions.js]: SUCCESS
+2021-08-13T01:54:59.835Z [info] [./addon/components/liquid-append.js]: SUCCESS
+2021-08-13T01:54:59.875Z [info] [./addon/services/liquid-wormhole.js]: SUCCESS
+2021-08-13T01:54:59.875Z [info] [./addon/components/liquid-wormhole.js]: SUCCESS
+2021-08-13T01:54:59.887Z [warn] [./addon/transitions/wormhole.js]: SKIPPED Could not find runtime data NO_RUNTIME_DATA
+2021-08-13T01:54:59.919Z [info] [./addon/components/liquid-destination.js]: SUCCESS

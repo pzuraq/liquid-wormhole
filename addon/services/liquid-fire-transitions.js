@@ -4,15 +4,19 @@ import TransitionMap from 'liquid-fire/transition-map';
 
 const wormholeActionMap = new WeakMap();
 
-export default TransitionMap.extend({
+export default class LiquidFireTransitionsService extends TransitionMap {
   transitionFor(conditions) {
-    if (conditions.matchContext && conditions.matchContext.helperName === 'liquid-wormhole' ||
-      conditions.helperName === 'liquid-wormhole') {
-
+    if (
+      (conditions.matchContext &&
+        conditions.matchContext.helperName === 'liquid-wormhole') ||
+      conditions.helperName === 'liquid-wormhole'
+    ) {
       const versions = conditions.versions;
 
-      conditions.versions = versions.map(version => version.value || version);
-      conditions.parentElement = conditions.parentElement.find('.liquid-wormhole-element');
+      conditions.versions = versions.map((version) => version.value || version);
+      conditions.parentElement = conditions.parentElement.find(
+        '.liquid-wormhole-element'
+      );
       conditions.firstTime = 'no';
 
       const rule = this.constraintsFor(conditions).bestMatch(conditions);
@@ -33,7 +37,7 @@ export default TransitionMap.extend({
 
       return new RunningTransition(this, versions, action);
     } else {
-      return this._super(conditions);
+      return super.transitionFor(conditions);
     }
-  },
-});
+  }
+}
