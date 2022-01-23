@@ -43,12 +43,12 @@
     "babel-eslint": "^10.1.0",
     "bootstrap-sass": "~3.4.1",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "^2.2.4",
+    "ember-auto-import": "^2.4.0",
     "ember-cli": "~4.1.0",
     "ember-cli-dependency-checker": "^3.2.0",
     "ember-cli-github-pages": "^0.2.2",
     "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-markdown-compiler": "rwwagner90/ember-cli-markdown-compiler#e0d286c740d3885657787e72ec64d1ba61fb3018",
+    "ember-cli-markdown-compiler": "rwwagner90/ember-cli-markdown-compiler#930f9605920b90cb0ddd447750394f68b4ef72dd",
     "ember-cli-sass": "^10.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
@@ -76,7 +76,7 @@
     "release-it": "^14.12.3",
     "release-it-lerna-changelog": "^4.0.1",
     "sass": "^1.49.0",
-    "webpack": "^5.66.0"
+    "webpack": "^5.67.0"
   },
   "peerDependencies": {
     "liquid-fire": "^0.34.0"
