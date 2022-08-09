@@ -21,6 +21,7 @@ module.exports = {
   },
   rules: {
     'ember/no-actions-hash': 'warn',
+    'ember/no-array-prototype-extensions': 'warn',
     'ember/no-classic-classes': 'warn',
     'ember/no-classic-components': 'warn',
     'ember/no-component-lifecycle-hooks': 'warn',
