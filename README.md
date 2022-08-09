@@ -1,7 +1,6 @@
-[![Build Status](https://travis-ci.org/pzuraq/liquid-wormhole.svg?branch=master)](https://travis-ci.org/pzuraq/liquid-wormhole)
+# liquid-wormhole
 
-liquid-wormhole
-==============================================================================
+[![CI](https://github.com/pzuraq/liquid-wormhole/actions/workflows/ci.yml/badge.svg)](https://github.com/pzuraq/liquid-wormhole/actions/workflows/ci.yml)
 
 Liquid Wormhole combines the ideas behind
 [Ember Wormhole](https://github.com/yapplabs/ember-wormhole.git) with the power of
@@ -12,35 +11,30 @@ Interactive documentation can be found
 [here](http://pzuraq.github.io/liquid-wormhole/).
 
 
-Compatibility
-------------------------------------------------------------------------------
+## Compatibility
 
 * Ember.js v3.24 or above
 * Ember CLI v3.24 or above
-* Node.js v12 or above
+* Node.js v14 or above
 
 
-Installation
-------------------------------------------------------------------------------
+## Installation
 
 ```
 ember install liquid-wormhole
 ```
 
 
-Usage
-------------------------------------------------------------------------------
+## Usage
 
 [Longer description of how to use the addon in apps.]
 
 
-Contributing
-------------------------------------------------------------------------------
+## Contributing
 
 See the [Contributing](CONTRIBUTING.md) guide for details.
 
 
-License
-------------------------------------------------------------------------------
+## License
 
 This project is licensed under the [MIT License](LICENSE.md).
