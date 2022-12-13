@@ -27,8 +27,8 @@
   },
   "dependencies": {
     "@ember/jquery": "^2.0.0",
-    "@ember/render-modifiers": "^2.0.2",
-    "@embroider/util": "^1.0.0",
+    "@ember/render-modifiers": "^2.0.4",
+    "@embroider/util": "^1.9.0",
     "@glimmer/component": "^1.1.2",
     "@glimmer/tracking": "^1.1.2",
     "ember-cli-babel": "^7.26.11",
@@ -39,11 +39,11 @@
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
     "@ember/test-helpers": "^2.8.1",
-    "@embroider/test-setup": "^1.8.3",
+    "@embroider/test-setup": "^2.0.2",
     "babel-eslint": "^10.1.0",
     "bootstrap-sass": "~3.4.1",
     "broccoli-asset-rev": "^3.0.0",
-    "ember-auto-import": "^2.4.2",
+    "ember-auto-import": "^2.5.0",
     "ember-cli": "~4.6.0",
     "ember-cli-dependency-checker": "^3.3.1",
     "ember-cli-github-pages": "^0.2.2",
@@ -72,10 +72,10 @@
     "prettier": "^2.7.1",
     "qunit": "^2.19.1",
     "qunit-dom": "^2.0.0",
-    "release-it": "^14.12.3",
-    "release-it-lerna-changelog": "^4.0.1",
+    "release-it": "^15.5.1",
+    "release-it-lerna-changelog": "^5.0.0",
     "sass": "^1.49.0",
-    "webpack": "^5.74.0"
+    "webpack": "^5.75.0"
   },
   "peerDependencies": {
     "liquid-fire": "^0.34.0"

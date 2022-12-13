@@ -1,0 +1,16 @@
+<div class="example-button-container">
+  <button
+    id="hello-world-button"
+    class="btn btn-primary btn-embossed"
+    type="button"
+    {{on "click" this.toggleHello}}
+  >
+    Give it a shot!
+  </button>
+  
+  {{#if this.showHello}}
+    <LiquidWormhole @class="hello-world notification top-right">
+      Hello, World!
+    </LiquidWormhole>
+  {{/if}}
+</div>
