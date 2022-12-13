@@ -23,7 +23,7 @@ module('Acceptance: Demos', function (hooks) {
   });
 
   test('destination container is cleaned when empty', async function (assert) {
-    await visit('/docs');
+    await visit('/demo-test');
     await click('#hello-world-button');
     await click('#hello-world-button');
 
@@ -37,7 +37,7 @@ module('Acceptance: Demos', function (hooks) {
   test('basic liquid-wormhole works correctly and can determine context', async function (assert) {
     assert.expect(5);
 
-    await visit('/docs');
+    await visit('/demo-test');
     noTransitionsYet(app, assert);
 
     await click('#hello-world-button');
