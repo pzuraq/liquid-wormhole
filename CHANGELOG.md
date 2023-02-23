@@ -1,4 +1,13 @@
 
+
+## v3.0.1 (2023-02-23)
+
+#### :bug: Bug Fix
+* [#77](https://github.com/pzuraq/liquid-wormhole/pull/77) Update forked package links ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### Committers: 1
+- Robbie Wagner ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
 ## v3.0.0 (2022-12-13)
 
 #### :boom: Breaking Change
