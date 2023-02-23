@@ -34,7 +34,7 @@
     "ember-cli-babel": "^7.26.11",
     "ember-cli-htmlbars": "^6.1.0",
     "ember-decorators": "^6.1.1",
-    "perf-primitives": "rwwagner90/perf-primitives#a6a26f11497ca27be3763a88a5f20744e424756b"
+    "perf-primitives": "RobbieTheWagner/perf-primitives#a6a26f11497ca27be3763a88a5f20744e424756b"
   },
   "devDependencies": {
     "@ember/optional-features": "^2.0.0",
@@ -48,7 +48,7 @@
     "ember-cli-dependency-checker": "^3.3.1",
     "ember-cli-github-pages": "^0.2.2",
     "ember-cli-inject-live-reload": "^2.1.0",
-    "ember-cli-markdown-compiler": "rwwagner90/ember-cli-markdown-compiler#930f9605920b90cb0ddd447750394f68b4ef72dd",
+    "ember-cli-markdown-compiler": "RobbieTheWagner/ember-cli-markdown-compiler#930f9605920b90cb0ddd447750394f68b4ef72dd",
     "ember-cli-sass": "^10.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
