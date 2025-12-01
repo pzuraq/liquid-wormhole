@@ -117,8 +117,11 @@
       "tokenRef": "GITHUB_AUTH"
     }
   },
-  "volta": {
-    "node": "12.22.1",
-    "yarn": "1.22.10"
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "core-js",
+      "highlight.js"
+    ]
   }
 }
