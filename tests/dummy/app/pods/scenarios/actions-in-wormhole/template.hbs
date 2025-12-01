@@ -1,7 +1,7 @@
 {{#unless this.hideWormhole}}
-  <LiquidWormhole @class='blue-box'>
+  <LiquidWormhole @class="blue-box">
     <TestComponent @action={{this.toggleWormhole}} as |someAction|>
-      <button data-test-toggle-wormhole type='button' {{on 'click' someAction}}>
+      <button data-test-toggle-wormhole type="button" {{on "click" someAction}}>
         Toggle Wormhole
       </button>
     </TestComponent>

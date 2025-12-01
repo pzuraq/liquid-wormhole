@@ -45,9 +45,9 @@ If you want to warp elements somewhere else, consider
 
 ```js
 this.transition(
-  this.hasClass('hello-world'),
+  this.hasClass("hello-world"),
   this.toValue(true),
-  this.use('to-down'),
-  this.reverse('to-up')
+  this.use("to-down"),
+  this.reverse("to-up"),
 );
 ```

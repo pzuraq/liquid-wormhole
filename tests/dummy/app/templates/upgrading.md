@@ -13,16 +13,17 @@ your wormhole's classes. You'll then be able to match it in your transitions
 file using `this.matchSelector` or `this.hasClass` respectively.
 
 ### Old:
+
 ```hbs
 {{liquid-wormhole to="popup"}}
 ```
+
 ```js
-this.transition(
-  target('popup')
-);
+this.transition(target("popup"));
 ```
 
 ### New:
+
 ```hbs
 {{liquid-wormhole class="popup"}}
 
@@ -30,16 +31,13 @@ this.transition(
 
 {{liquid-wormhole stack="popup"}}
 ```
+
 ```js
-this.transition(
-  this.hasClass('popup')
-);
+this.transition(this.hasClass("popup"));
 
 // or
 
-this.transition(
-  this.matchSelector('#popup')
-);
+this.transition(this.matchSelector("#popup"));
 ```
 
 ## Replacing the `onOpenWormhole` and `onCloseWormhole` helpers
@@ -50,25 +48,19 @@ functions. Whenever a wormhole is opening for the first time, the `fromValue`
 will be `null`, and whenever a wormhole is closing, the so will the `toValue`.
 
 ### Old:
-```js
-this.transition(
-  onOpenWormhole()
-);
 
-this.transition(
-  onCloseWormhole()
-);
+```js
+this.transition(onOpenWormhole());
+
+this.transition(onCloseWormhole());
 ```
 
 ### New:
-```js
-this.transition(
-  this.toValue(true)
-);
 
-this.transition(
-  this.toValue(false)
-);
+```js
+this.transition(this.toValue(true));
+
+this.transition(this.toValue(false));
 ```
 
 ## Replacing `toValue` and `fromValue` matchers
@@ -79,17 +71,19 @@ the properties that you had into a `hash` helper and everything should work.
 Remember, you may need to perform null checking.
 
 ### Old:
+
 ```hbs
 {{liquid-wormhole index=1}}
 ```
 
 ```js
 this.transition(
-  this.toValue((toValue, fromValue) => toValue.index > oldValue.index)
+  this.toValue((toValue, fromValue) => toValue.index > oldValue.index),
 );
 ```
 
 ### New:
+
 ```hbs
 {{liquid-wormhole value=(hash index=1)}}
 ```
@@ -98,6 +92,6 @@ this.transition(
 this.transition(
   this.toValue((toValue, fromValue) => {
     return toValue && fromValue && toValue.index > oldValue.index;
-  })
+  }),
 );
 ```

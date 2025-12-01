@@ -1,14 +1,14 @@
 // Add percentage of white to a color
-@function tint($color, $percent){
+@function tint($color, $percent) {
   @return mix(white, $color, $percent);
 }
 
 // Add percentage of black to a color
-@function shade($color, $percent){
+@function shade($color, $percent) {
   @return mix(black, $color, $percent);
 }
 
-@function fade($color, $percent){
+@function fade($color, $percent) {
   @return fade-out($color, 1 - ($percent / 100%));
 }
 
@@ -20,12 +20,12 @@ $container-large-desktop: 992px;
 // Flat UI Variables
 @import "flat-ui/variables";
 
-$border-radius-base:        2px;
-$border-radius-large:       2px;
-$border-radius-small:       2px;
+$border-radius-base: 2px;
+$border-radius-large: 2px;
+$border-radius-small: 2px;
 
-$link-color:                $pumpkin;
-$link-hover-color:          $carrot;
+$link-color: $pumpkin;
+$link-hover-color: $carrot;
 
 // Main Bootstrap
 // Core variables and mixins
@@ -78,7 +78,6 @@ $link-hover-color:          $carrot;
 // Utility classes
 @import "bootstrap/utilities";
 @import "bootstrap/responsive-utilities";
-
 
 // Flat-UI-Icons
 @import "flat-ui/modules/glyphicons";

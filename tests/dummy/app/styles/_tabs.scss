@@ -1,12 +1,12 @@
-$nav-tabs-border-width:  2px;
-$nav-tabs-border-color:  mix($brand-primary, white, 15%);
-$nav-tabs-color:         mix($brand-primary, white, 63%);
-$nav-tabs-active-color:  mix($brand-primary, white, 63%);
-$nav-tabs-hover-color:   $brand-secondary;
-$nav-border-radius:      3px;
+$nav-tabs-border-width: 2px;
+$nav-tabs-border-color: mix($brand-primary, white, 15%);
+$nav-tabs-color: mix($brand-primary, white, 63%);
+$nav-tabs-active-color: mix($brand-primary, white, 63%);
+$nav-tabs-hover-color: $brand-secondary;
+$nav-border-radius: 3px;
 $nav-item-border-radius: $nav-border-radius;
-$nav-open-zindex:        1001;
-$nav-list-gap:           13px;
+$nav-open-zindex: 1001;
+$nav-list-gap: 13px;
 
 .nav-tabs {
   margin-bottom: 20px;
@@ -160,9 +160,13 @@ $nav-list-gap:           13px;
             background-color: $brand-secondary;
             border: 2px solid $brand-secondary;
             color: $inverse;
-            &:before { display: none; }
+            &:before {
+              display: none;
+            }
           }
-          &:before { display: none; }
+          &:before {
+            display: none;
+          }
         }
 
         &.dropdown {
@@ -182,7 +186,8 @@ $nav-list-gap:           13px;
               > a.dropdown-toggle,
               > a:hover {
                 color: $nav-tabs-active-color;
-                border-radius: $nav-item-border-radius $nav-item-border-radius 0 0;
+                border-radius: $nav-item-border-radius $nav-item-border-radius 0
+                  0;
 
                 .caret {
                   border-bottom-color: $nav-tabs-active-color;

@@ -53,6 +53,7 @@ will accept as attributes.
 </table>
 
 ## `liquid-destination` Parameters
+
 <table class="table">
   <thead>
     <tr>
