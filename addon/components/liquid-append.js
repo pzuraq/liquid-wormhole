@@ -1,17 +1,13 @@
-import Component from '@ember/component';
+import Component from '@glimmer/component';
 import { action } from '@ember/object';
-import { layout as templateLayout, tagName } from '@ember-decorators/component';
-import layout from '../templates/components/liquid-append';
 
 import $ from 'jquery';
 
-@tagName('')
-@templateLayout(layout)
 export default class LiquidAppend extends Component {
   @action
   _didUpdate(element) {
-    if (this.replaceNodes) {
-      const nodes = this.nodes;
+    if (this.args.replaceNodes) {
+      const nodes = this.args.nodes;
 
       $(element).children().remove();
       $(element).append(nodes);
@@ -20,8 +16,7 @@ export default class LiquidAppend extends Component {
 
   @action
   _didInsert(element) {
-    const notify = this.notify;
-    const nodes = this.nodes;
+    const { nodes, notify } = this.args;
 
     if (notify && notify.willAppendNodes) {
       notify.willAppendNodes(element);
