@@ -1,5 +1,4 @@
 /* eslint-disable ember/no-computed-properties-in-native-classes */
-import { tagName } from '@ember-decorators/component';
 import { inject as service } from '@ember/service';
 import { gt } from '@ember/object/computed';
 import Component from '@ember/component';
@@ -8,8 +7,9 @@ import { scheduleOnce, next } from '@ember/runloop';
 import { A } from '@ember/array';
 import HashMap from 'perf-primitives/hash-map';
 
-@tagName('')
 export default class LiquidDestination extends Component {
+  tagName = '';
+
   @service('liquidWormhole') liquidWormholeService;
 
   extraClassesString = '';

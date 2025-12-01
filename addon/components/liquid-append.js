@@ -1,11 +1,11 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
-import { tagName } from '@ember-decorators/component';
 
 import $ from 'jquery';
 
-@tagName('')
 export default class LiquidAppend extends Component {
+  tagName = '';
+
   @action
   _didUpdate(element) {
     if (this.replaceNodes) {
