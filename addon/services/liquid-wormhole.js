@@ -3,14 +3,12 @@ import Service from '@ember/service';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
 import HashMap from 'perf-primitives/hash-map';
-import LiquidDestination from '../components/liquid-destination';
 
 export default class LiquidWormholeService extends Service {
   constructor() {
     super(...arguments);
 
     this.destination = new HashMap();
-    getOwner(this).register('component:-liquid-destination', LiquidDestination);
   }
 
   willDestroy() {
@@ -61,7 +59,7 @@ export default class LiquidWormholeService extends Service {
   @action
   addDefaultDestination() {
     const instance = getOwner(this);
-    const destination = instance.lookup('component:-liquid-destination');
+    const destination = instance.lookup('component:liquid-destination');
     destination.set('extraClassesString', 'default-liquid-destination');
 
     if (instance.rootElement) {
