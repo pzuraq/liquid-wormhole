@@ -33,9 +33,8 @@ export default class LiquidWormhole extends Component {
   // eslint-disable-next-line ember/classic-decorator-hooks
   init() {
     const wormholeClass = this.class;
-    const wormholeId = this.stack || this.id;
+    const wormholeId = this.stack || this.id || guidFor(this);
 
-    set(this, 'stack', guidFor(this));
     set(this, 'wormholeClass', wormholeClass);
     set(this, 'wormholeId', wormholeId);
 
