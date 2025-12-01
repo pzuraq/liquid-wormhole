@@ -48,8 +48,7 @@ export default class LiquidDestination extends Component {
     var appendIndex = this.wormholeQueue.get('length') - 1;
 
     for (; appendIndex >= 0; appendIndex--) {
-      const lastWormholeElement =
-        this.wormholeQueue.objectAt(appendIndex).element;
+      const lastWormholeElement = this.wormholeQueue[appendIndex].element;
 
       if (!wormhole.element.contains(lastWormholeElement)) {
         break; // break when we find the first wormhole that isn't a parent
