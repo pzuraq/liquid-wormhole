@@ -29,6 +29,7 @@ module.exports = {
     'ember/no-classic-components': 'warn',
     'ember/no-component-lifecycle-hooks': 'warn',
     'ember/no-jquery': 'warn',
+    'ember/no-runloop': 'off',
     'ember/require-tagless-components': 'warn',
   },
   overrides: [
@@ -61,6 +62,7 @@ module.exports = {
       extends: ['plugin:qunit/recommended'],
       rules: {
         'qunit/no-assert-equal': 'off',
+        'qunit/require-expect': 'off',
       },
     },
   ],

@@ -21,7 +21,7 @@ export default function wormhole(context) {
 
   if (this.oldElement) {
     oldWormholeElement = this.oldElement.find(
-      '.liquid-wormhole-element:last-child'
+      '.liquid-wormhole-element:last-child',
     );
 
     this.oldElement = null;
@@ -54,7 +54,7 @@ export default function wormhole(context) {
 
   if (this.newElement) {
     newWormholeElement = this.newElement.find(
-      '.liquid-wormhole-element:last-child'
+      '.liquid-wormhole-element:last-child',
     );
 
     this.newElement = null;

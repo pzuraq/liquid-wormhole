@@ -30,7 +30,7 @@ module('Acceptance: Demos', function (hooks) {
     assert.equal(
       findAll('.default-liquid-destination .liquid-destination-stack').length,
       0,
-      "it's empty"
+      "it's empty",
     );
   });
 
@@ -44,7 +44,7 @@ module('Acceptance: Demos', function (hooks) {
     assert.equal(
       findAll('.default-liquid-destination .liquid-wormhole-element').length,
       1,
-      'it exists'
+      'it exists',
     );
     ranTransition(app, assert, 'wormhole');
 
@@ -52,7 +52,7 @@ module('Acceptance: Demos', function (hooks) {
     assert.equal(
       findAll('.default-liquid-destination .liquid-wormhole-element').length,
       0,
-      'it closed'
+      'it closed',
     );
     ranTransition(app, assert, 'wormhole');
   });

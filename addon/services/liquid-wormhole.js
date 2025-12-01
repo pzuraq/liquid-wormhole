@@ -47,7 +47,7 @@ export default class LiquidWormholeService extends Service {
   registerDestination(destinationName, destination) {
     if (this.destination.get(destinationName)) {
       throw new Error(
-        `Liquid Wormhole destination '${destinationName}' already created`
+        `Liquid Wormhole destination '${destinationName}' already created`,
       );
     }
     this.destination.set(destinationName, destination);

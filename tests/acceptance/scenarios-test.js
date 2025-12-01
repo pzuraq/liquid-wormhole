@@ -36,7 +36,7 @@ module('Acceptance: Scenarios', function (hooks) {
       assert.equal(visibility(liquidWormholeElements[0]), 'hidden');
       assert.equal(
         visibility(liquidWormholeElements[liquidWormholeElements.length - 1]),
-        'visible'
+        'visible',
       );
     }, 100);
 
@@ -68,15 +68,15 @@ module('Acceptance: Scenarios', function (hooks) {
 
     assert.ok(
       firstWormhole.classList.contains('green-box'),
-      'First wormhole renders in correct order'
+      'First wormhole renders in correct order',
     );
     assert.ok(
       secondWormhole.classList.contains('blue-box'),
-      'Second wormhole renders in correct order'
+      'Second wormhole renders in correct order',
     );
     assert.ok(
       thirdWormhole.classList.contains('red-box'),
-      'Third wormhole renders in correct order'
+      'Third wormhole renders in correct order',
     );
   });
 
@@ -116,7 +116,7 @@ module('Acceptance: Scenarios', function (hooks) {
         .hasAttribute(
           'id',
           'my-password-input',
-          'password input contains original id'
+          'password input contains original id',
         );
       assert
         .dom('#my-text-input', firstElement)
@@ -150,7 +150,7 @@ module('Acceptance: Scenarios', function (hooks) {
         .hasAttribute(
           'id',
           'my-password-input',
-          'password input contains original id'
+          'password input contains original id',
         );
       assert
         .dom('#my-text-input', firstElement)

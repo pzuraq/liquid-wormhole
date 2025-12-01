@@ -5,6 +5,7 @@ module.exports = {
   rules: {
     'link-href-attributes': false,
     'no-action': false,
+    'no-at-ember-render-modifiers': false,
     'no-curly-component-invocation': false,
     'no-array-prototype-extensions': false,
     'no-implicit-this': false,
