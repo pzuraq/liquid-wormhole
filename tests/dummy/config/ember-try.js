@@ -5,16 +5,8 @@ const { embroiderSafe, embroiderOptimized } = require('@embroider/test-setup');
 
 module.exports = async function () {
   return {
-    useYarn: true,
+    usePnpm: true,
     scenarios: [
-      {
-        name: 'ember-lts-3.24',
-        npm: {
-          devDependencies: {
-            'ember-source': '~3.24.3',
-          },
-        },
-      },
       {
         name: 'ember-lts-3.28',
         npm: {
@@ -24,19 +16,42 @@ module.exports = async function () {
         },
       },
       {
-        name: 'ember-release',
+        name: 'ember-lts-4.12',
         npm: {
           devDependencies: {
-            'ember-source': await getChannelURL('release'),
+            'ember-source': '~4.12.0',
           },
         },
       },
       {
-        name: 'ember-release-no-deprecations',
+        name: 'ember-lts-5.4',
+        npm: {
+          devDependencies: {
+            'ember-source': '~5.4.0',
+          },
+        },
+      },
+      {
+        name: 'ember-lts-5.8',
+        npm: {
+          devDependencies: {
+            'ember-source': '~5.8.0',
+          },
+        },
+      },
+      {
+        name: 'ember-lts-5.12',
+        npm: {
+          devDependencies: {
+            'ember-source': '~5.12.0',
+          },
+        },
+      },
+      {
+        name: 'ember-release',
         npm: {
           devDependencies: {
             'ember-source': await getChannelURL('release'),
-            'ember-deprecation-error': '*',
           },
         },
       },
@@ -53,6 +68,19 @@ module.exports = async function () {
         npm: {
           devDependencies: {
             'ember-source': await getChannelURL('canary'),
+          },
+        },
+      },
+      {
+        name: 'ember-default-with-jquery',
+        env: {
+          EMBER_OPTIONAL_FEATURES: JSON.stringify({
+            'jquery-integration': true,
+          }),
+        },
+        npm: {
+          devDependencies: {
+            '@ember/jquery': '^1.1.0',
           },
         },
       },

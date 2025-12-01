@@ -10,7 +10,7 @@ The stack name will be applied as the id of the wormhole, allow you to match the
 the `matchSelector` helper from liquid-fire.
 
 <div class="example-button-container">
-  <button {{on "click" (action 'showFirstStep')}} class="btn btn-primary btn-embossed">
+  <button {{on "click" this.showFirstStep}} class="btn btn-primary btn-embossed">
     Open Dialogue
   </button>
   {{#if this.showFirstStep}}
@@ -19,7 +19,7 @@ the `matchSelector` helper from liquid-fire.
         Step One
       </div>
       <div class="modal-footer">
-        <button {{on "click" (action 'showSecondStep')}} class="btn btn-primary btn-embossed">
+        <button {{on "click" this.showSecondStep}} class="btn btn-primary btn-embossed">
           Go on
         </button>
       </div>
@@ -31,7 +31,7 @@ the `matchSelector` helper from liquid-fire.
         Step Two
       </div>
       <div class="modal-footer">
-        <button {{on "click" (action 'closeModal')}} class="btn btn-primary btn-embossed">
+        <button {{on "click" this.closeModal}} class="btn btn-primary btn-embossed">
           Done
         </button>
       </div>
@@ -40,7 +40,7 @@ the `matchSelector` helper from liquid-fire.
 </div>
 
 ```
-<button {{action 'showFirstStep'}}>
+<button {{on "click" this.showFirstStep}}>
   Open Dialogue
 </button>
 
