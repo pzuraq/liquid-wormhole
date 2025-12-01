@@ -54,7 +54,7 @@
     "ember-cli-github-pages": "^0.2.2",
     "ember-cli-inject-live-reload": "^2.1.0",
     "ember-cli-markdown-compiler": "github:RobbieTheWagner/ember-cli-markdown-compiler#930f9605920b90cb0ddd447750394f68b4ef72dd",
-    "ember-cli-sass": "^10.0.1",
+    "ember-cli-sass": "^11.0.1",
     "ember-cli-sri": "^2.1.1",
     "ember-cli-terser": "^4.0.2",
     "ember-load-initializers": "^2.1.2",

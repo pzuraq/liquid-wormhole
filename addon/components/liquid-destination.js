@@ -12,7 +12,7 @@ import layout from '../templates/components/liquid-destination';
 @templateLayout(layout)
 @tagName('')
 export default class LiquidDestination extends Component {
-  @service('liquidWormhole') liquidWormholeService;
+  @service('liquid-wormhole') liquidWormholeService;
 
   extraClassesString = '';
   name = 'default';
