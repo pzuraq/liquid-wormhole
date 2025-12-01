@@ -1,5 +1,5 @@
 /* eslint-disable ember/no-computed-properties-in-native-classes */
-import { layout as templateLayout, tagName } from '@ember-decorators/component';
+import { tagName } from '@ember-decorators/component';
 import { inject as service } from '@ember/service';
 import { gt } from '@ember/object/computed';
 import Component from '@ember/component';
@@ -7,9 +7,7 @@ import EmberObject, { action, set } from '@ember/object';
 import { scheduleOnce, next } from '@ember/runloop';
 import { A } from '@ember/array';
 import HashMap from 'perf-primitives/hash-map';
-import layout from '../templates/components/liquid-destination';
 
-@templateLayout(layout)
 @tagName('')
 export default class LiquidDestination extends Component {
   @service('liquidWormhole') liquidWormholeService;
@@ -123,7 +121,7 @@ export default class LiquidDestination extends Component {
 
     // If wormholes were made w/o animations, they need to be made visible manually.
     const liquidWormholeElement = view.element.querySelector(
-      '.liquid-wormhole-element'
+      '.liquid-wormhole-element',
     );
     if (liquidWormholeElement) {
       liquidWormholeElement.style.visibility = 'visible';

@@ -1,12 +1,10 @@
 import Component from '@ember/component';
 import { action } from '@ember/object';
-import { layout as templateLayout, tagName } from '@ember-decorators/component';
-import layout from '../templates/components/liquid-append';
+import { tagName } from '@ember-decorators/component';
 
 import $ from 'jquery';
 
 @tagName('')
-@templateLayout(layout)
 export default class LiquidAppend extends Component {
   @action
   _didUpdate(element) {
