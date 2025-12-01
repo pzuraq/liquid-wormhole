@@ -1,5 +1,17 @@
 
 
+
+## v4.0.0 (2025-12-01)
+
+#### :boom: Breaking Change
+* [#80](https://github.com/pzuraq/liquid-wormhole/pull/80) Require Ember 3.28+ ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### :bug: Bug Fix
+* [#79](https://github.com/pzuraq/liquid-wormhole/pull/79) Fix stack clobbering ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### Committers: 1
+- Robbie Wagner ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
 ## v3.0.1 (2023-02-23)
 
 #### :bug: Bug Fix
