@@ -5,7 +5,6 @@ import Component from '@ember/component';
 import EmberObject, { action, set } from '@ember/object';
 import { scheduleOnce, next } from '@ember/runloop';
 import { A } from '@ember/array';
-import HashMap from 'perf-primitives/hash-map';
 import layout from '../templates/components/liquid-destination';
 
 export default class LiquidDestination extends Component {
@@ -22,7 +21,7 @@ export default class LiquidDestination extends Component {
   constructor() {
     super(...arguments);
 
-    this.stackMap = new HashMap();
+    this.stackMap = new Map();
     set(this, 'matchContext', { helperName: 'liquid-wormhole' });
     set(this, 'stacks', A());
 
