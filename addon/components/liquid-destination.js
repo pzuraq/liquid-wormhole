@@ -64,7 +64,7 @@ export default class LiquidDestination extends Component {
     const stack = this.stackMap.get(stackName);
     const item = stack.find((item) => item && item.wormhole === wormhole);
 
-    const newNodes = item.get('nodes').clone();
+    const newNodes = item.get('nodes').map((node) => node.cloneNode(true));
     item.set('nodes', newNodes);
     item.set('_replaceNodes', true);
 
@@ -122,7 +122,7 @@ export default class LiquidDestination extends Component {
 
     // If wormholes were made w/o animations, they need to be made visible manually.
     const liquidWormholeElement = view.element.querySelector(
-      '.liquid-wormhole-element'
+      '.liquid-wormhole-element',
     );
     if (liquidWormholeElement) {
       liquidWormholeElement.style.visibility = 'visible';
