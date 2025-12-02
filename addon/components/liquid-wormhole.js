@@ -48,7 +48,6 @@ export default class LiquidWormhole extends Component {
   }
 
   didInsertElement() {
-    super.didInsertElement(...arguments);
     const nodes = Array.from(this.element.children);
     set(this, 'nodes', nodes);
 
@@ -57,13 +56,12 @@ export default class LiquidWormhole extends Component {
 
     this.liquidWormholeService.appendWormhole(this, this.to);
 
-    super.didInsertElement.apply(this, arguments);
+    super.didInsertElement(...arguments);
   }
 
   willDestroyElement() {
-    super.willDestroyElement(...arguments);
     this.liquidWormholeService.removeWormhole(this, this.to);
 
-    super.willDestroyElement.apply(this, arguments);
+    super.willDestroyElement(...arguments);
   }
 }
