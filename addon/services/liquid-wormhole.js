@@ -1,15 +1,13 @@
-import $ from 'jquery';
 import Service from '@ember/service';
 import { action } from '@ember/object';
 import { getOwner } from '@ember/application';
-import HashMap from 'perf-primitives/hash-map';
 import LiquidDestination from '../components/liquid-destination';
 
 export default class LiquidWormholeService extends Service {
   constructor() {
     super(...arguments);
 
-    this.destination = new HashMap();
+    this.destination = new Map();
     getOwner(this).register('component:-liquid-destination', LiquidDestination);
   }
 
@@ -66,8 +64,6 @@ export default class LiquidWormholeService extends Service {
 
     if (instance.rootElement) {
       destination.appendTo(instance.rootElement);
-    } else if ($('.ember-application').length > 0) {
-      destination.appendTo($('.ember-application')[0]);
     } else {
       destination.appendTo(document);
     }
