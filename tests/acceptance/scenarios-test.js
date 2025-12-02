@@ -4,16 +4,11 @@ import {
   findAll,
   settled,
   visit,
-  waitFor,
   waitUntil,
 } from '@ember/test-helpers';
 
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
-
-function visibility(element) {
-  return window.getComputedStyle(element).visibility;
-}
 
 module('Acceptance: Scenarios', function (hooks) {
   setupApplicationTest(hooks);
@@ -173,7 +168,10 @@ module('Acceptance: Scenarios', function (hooks) {
         firstElement = liquidWormholeElements[0];
         lastElement = liquidWormholeElements[liquidWormholeElements.length - 1];
 
-        return firstElement && lastElement;
+        return (
+          firstElement.querySelector('#my-password-input') &&
+          !lastElement.querySelector('#my-password-input')
+        );
       },
       { timeout: 5000 }
     );
@@ -211,14 +209,13 @@ module('Acceptance: Scenarios', function (hooks) {
         firstElement = liquidWormholeElements[0];
         lastElement = liquidWormholeElements[liquidWormholeElements.length - 1];
 
-        return firstElement && lastElement;
+        return (
+          firstElement.querySelector('#my-password-input') &&
+          !lastElement.querySelector('#my-password-input')
+        );
       },
       { timeout: 5000 }
     );
-
-    liquidWormholeElements = findAll('.liquid-wormhole-element');
-    firstElement = liquidWormholeElements[0];
-    lastElement = liquidWormholeElements[liquidWormholeElements.length - 1];
 
     assert
       .dom('#my-password-input', firstElement)
