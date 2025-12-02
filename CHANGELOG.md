@@ -2,6 +2,18 @@
 
 
 
+
+## v5.0.0 (2025-12-02)
+
+#### :boom: Breaking Change
+* [#85](https://github.com/pzuraq/liquid-wormhole/pull/85) Remove jquery, require liquid-fire 0.37.1+ ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### :house: Internal
+* [#84](https://github.com/pzuraq/liquid-wormhole/pull/84) Remove perf-primitives ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### Committers: 1
+- Robbie Wagner ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
 ## v4.0.2 (2025-12-02)
 
 ## v4.0.1 (2025-12-02)
