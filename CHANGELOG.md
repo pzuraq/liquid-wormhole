@@ -1,6 +1,16 @@
 
 
 
+
+## v4.0.1 (2025-12-02)
+
+#### :rocket: Enhancement
+* [#83](https://github.com/pzuraq/liquid-wormhole/pull/83) Remove ember-decorators ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+* [#82](https://github.com/pzuraq/liquid-wormhole/pull/82) Convert liquid-append to glimmer ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### Committers: 1
+- Robbie Wagner ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
 ## v4.0.0 (2025-12-01)
 
 #### :boom: Breaking Change
