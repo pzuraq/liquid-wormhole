@@ -22,7 +22,7 @@ function getOffset(element) {
   };
 }
 
-export default function wormhole(context) {
+export default async function wormhole(context) {
   const { use } = context;
 
   let oldWormholeElement, newWormholeElement;
@@ -106,32 +106,32 @@ export default function wormhole(context) {
 
   // Look up the animation to use
   let animation;
+
   if (typeof use.handler === 'function') {
     animation = use.handler;
   } else {
     animation = context.lookup(use.name);
   }
 
-  // Run the animation and clean up afterwards
-  return animation.apply(this, use.args).finally(() => {
-    // Clean up old element
-    if (this.oldElement && oldWormholeElement) {
-      this.oldElement.remove();
-      oldWormholeElement.style.visibility = 'visible';
-      const oldLiquidChild = oldWormholeElement.querySelector('.liquid-child');
-      if (oldLiquidChild) {
-        oldLiquidChild.style.visibility = 'visible';
-      }
-    }
+  await animation.apply(this, use.args);
 
-    // Clean up new element
-    if (this.newElement && newWormholeElement) {
-      this.newElement.remove();
-      newWormholeElement.style.visibility = 'visible';
-      const newLiquidChild = newWormholeElement.querySelector('.liquid-child');
-      if (newLiquidChild) {
-        newLiquidChild.style.visibility = 'visible';
-      }
+  // Clean up old element
+  if (this.oldElement && oldWormholeElement) {
+    this.oldElement.remove();
+    oldWormholeElement.style.visibility = 'visible';
+    const oldLiquidChild = oldWormholeElement.querySelector('.liquid-child');
+    if (oldLiquidChild) {
+      oldLiquidChild.style.visibility = 'visible';
     }
-  });
+  }
+
+  // Clean up new element
+  if (this.newElement && newWormholeElement) {
+    this.newElement.remove();
+    newWormholeElement.style.visibility = 'visible';
+    const newLiquidChild = newWormholeElement.querySelector('.liquid-child');
+    if (newLiquidChild) {
+      newLiquidChild.style.visibility = 'visible';
+    }
+  }
 }
