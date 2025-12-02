@@ -4,17 +4,15 @@
 
 <LiquidWormhole @class="blue-box">
   <div id="content-box">
-    <LiquidIf @predicate={{this.showingOther}}>
-      <:true>
-        <span id="showing-other">
-          Show Other
-        </span>
-      </:true>
-      <:false>
-        <span id="not-showing-other">
-          Don't Show Other
-        </span>
-      </:false>
-    </LiquidIf>
+    {{#liquid-if predicate=this.showingOther}}
+      <span id="showing-other">
+        Show Other
+      </span>
+    {{else}}
+
+      <span id="not-showing-other">
+        Don't Show Other
+      </span>
+    {{/liquid-if}}
   </div>
 </LiquidWormhole>

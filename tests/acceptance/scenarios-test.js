@@ -1,4 +1,12 @@
-import { click, findAll, settled, visit } from '@ember/test-helpers';
+import {
+  click,
+  find,
+  findAll,
+  settled,
+  visit,
+  waitFor,
+  waitUntil,
+} from '@ember/test-helpers';
 
 import { setupApplicationTest } from 'ember-qunit';
 import { module, test } from 'qunit';
@@ -21,36 +29,72 @@ module('Acceptance: Scenarios', function (hooks) {
     assert.expect(4);
 
     visit('/scenarios/component-in-wormhole');
-    setTimeout(() => {
-      let liquidWormholeElements = findAll('.liquid-wormhole-element');
-      assert.dom(liquidWormholeElements[0]).hasStyle({ visibility: 'hidden' });
-      assert
-        .dom(liquidWormholeElements[liquidWormholeElements.length - 1])
-        .hasStyle({ visibility: 'visible' });
-    }, 100);
+
+    let liquidWormholeElements;
+
+    await waitUntil(
+      () => {
+        liquidWormholeElements = findAll('.liquid-wormhole-element');
+
+        return (
+          getComputedStyle(liquidWormholeElements[0]).visibility === 'hidden' &&
+          getComputedStyle(
+            liquidWormholeElements[liquidWormholeElements.length - 1]
+          ).visibility === 'visible'
+        );
+      },
+      { timeout: 5000 }
+    );
+
+    assert.dom(liquidWormholeElements[0]).hasStyle({ visibility: 'hidden' });
+    assert
+      .dom(liquidWormholeElements[liquidWormholeElements.length - 1])
+      .hasStyle({ visibility: 'visible' });
 
     await settled();
-    click('[data-test-toggle-wormhole]');
-    setTimeout(() => {
-      let liquidWormholeElements = findAll('.liquid-wormhole-element');
-      assert.equal(visibility(liquidWormholeElements[0]), 'hidden');
-      assert.equal(
-        visibility(liquidWormholeElements[liquidWormholeElements.length - 1]),
-        'visible'
-      );
-    }, 100);
+    await click('[data-test-toggle-wormhole]');
+    await waitUntil(
+      () => {
+        liquidWormholeElements = findAll('.liquid-wormhole-element');
+
+        return (
+          getComputedStyle(liquidWormholeElements[0]).visibility === 'hidden' &&
+          getComputedStyle(
+            liquidWormholeElements[liquidWormholeElements.length - 1]
+          ).visibility === 'visible'
+        );
+      },
+      { timeout: 5000 }
+    );
+
+    assert.dom(liquidWormholeElements[0]).hasStyle({ visibility: 'hidden' });
+    assert
+      .dom(liquidWormholeElements[liquidWormholeElements.length - 1])
+      .hasStyle({ visibility: 'visible' });
 
     await settled();
   });
 
   test('templates still have action context once rendered', async function (assert) {
     await visit('/scenarios/actions-in-wormhole');
+    await waitUntil(
+      () =>
+        findAll('.default-liquid-destination .liquid-wormhole-element')
+          .length === 1,
+      { timeout: 5000 }
+    );
 
     assert
       .dom('.default-liquid-destination .liquid-wormhole-element')
       .exists({ count: 1 }, 'it has a wormhole');
 
     await click('[data-test-toggle-wormhole]');
+    await waitUntil(
+      () =>
+        findAll('.default-liquid-destination .liquid-wormhole-element')
+          .length === 0,
+      { timeout: 5000 }
+    );
 
     assert
       .dom('.default-liquid-destination .liquid-wormhole-element')
@@ -90,12 +134,26 @@ module('Acceptance: Scenarios', function (hooks) {
 
   test('other liquid fire functionality can exist in a wormhole in the default destination', async function (assert) {
     await visit('/scenarios/liquid-fire-in-wormhole');
+    await waitUntil(
+      () => {
+        const showingOther = find('#showing-other');
+        return getComputedStyle(showingOther).visibility === 'visible';
+      },
+      { timeout: 5000 }
+    );
 
     assert.dom('#content-box').exists();
     assert.dom('#showing-other').hasStyle({ visibility: 'visible' });
     assert.dom('#not-showing-other').doesNotExist();
 
     await click('[data-test-toggle-inner]');
+    await waitUntil(
+      () => {
+        const showingOther = find('#not-showing-other');
+        return getComputedStyle(showingOther).visibility === 'visible';
+      },
+      { timeout: 5000 }
+    );
 
     assert.dom('#not-showing-other').hasStyle({ visibility: 'visible' });
     assert.dom('#showing-other').doesNotExist();
@@ -105,71 +163,86 @@ module('Acceptance: Scenarios', function (hooks) {
   test("wormhole does not contain duplicate child id's", async function (assert) {
     visit('/scenarios/password-input-child');
 
-    setTimeout(() => {
-      let liquidWormholeElements = findAll('.liquid-wormhole-element');
-      let firstElement = liquidWormholeElements[0];
-      let lastElement =
-        liquidWormholeElements[liquidWormholeElements.length - 1];
+    let liquidWormholeElements;
+    let firstElement;
+    let lastElement;
 
-      assert
-        .dom('#my-password-input', firstElement)
-        .hasAttribute(
-          'id',
-          'my-password-input',
-          'password input contains original id'
-        );
-      assert
-        .dom('#my-text-input', firstElement)
-        .hasAttribute('id', 'my-text-input', 'text input contains original id');
-      assert
-        .dom('#my-button', firstElement)
-        .hasAttribute('id', 'my-button', 'button contains original id');
+    await waitUntil(
+      () => {
+        liquidWormholeElements = findAll('.liquid-wormhole-element');
+        firstElement = liquidWormholeElements[0];
+        lastElement = liquidWormholeElements[liquidWormholeElements.length - 1];
 
-      assert
-        .dom('#my-password-input', lastElement)
-        .doesNotExist('cloned password input does not contain duplicate id');
-      assert
-        .dom('#my-text-input', lastElement)
-        .doesNotExist('cloned text input does not contain duplicate id');
-      assert
-        .dom('#my-button', lastElement)
-        .doesNotExist('cloned button does not contain duplicate id');
-    }, 100);
+        return firstElement && lastElement;
+      },
+      { timeout: 5000 }
+    );
+
+    assert
+      .dom('#my-password-input', firstElement)
+      .hasAttribute(
+        'id',
+        'my-password-input',
+        'password input contains original id'
+      );
+    assert
+      .dom('#my-text-input', firstElement)
+      .hasAttribute('id', 'my-text-input', 'text input contains original id');
+    assert
+      .dom('#my-button', firstElement)
+      .hasAttribute('id', 'my-button', 'button contains original id');
+
+    assert
+      .dom('#my-password-input', lastElement)
+      .doesNotExist('cloned password input does not contain duplicate id');
+    assert
+      .dom('#my-text-input', lastElement)
+      .doesNotExist('cloned text input does not contain duplicate id');
+    assert
+      .dom('#my-button', lastElement)
+      .doesNotExist('cloned button does not contain duplicate id');
 
     await settled();
     click('[data-test-toggle-wormhole]');
 
-    setTimeout(() => {
-      let liquidWormholeElements = findAll('.liquid-wormhole-element');
-      let firstElement = liquidWormholeElements[0];
-      let lastElement =
-        liquidWormholeElements[liquidWormholeElements.length - 1];
+    await waitUntil(
+      () => {
+        liquidWormholeElements = findAll('.liquid-wormhole-element');
+        firstElement = liquidWormholeElements[0];
+        lastElement = liquidWormholeElements[liquidWormholeElements.length - 1];
 
-      assert
-        .dom('#my-password-input', firstElement)
-        .hasAttribute(
-          'id',
-          'my-password-input',
-          'password input contains original id'
-        );
-      assert
-        .dom('#my-text-input', firstElement)
-        .hasAttribute('id', 'my-text-input', 'text input contains original id');
-      assert
-        .dom('#my-button', firstElement)
-        .hasAttribute('id', 'my-button', 'button contains original id');
+        return firstElement && lastElement;
+      },
+      { timeout: 5000 }
+    );
 
-      assert
-        .dom('#my-password-input', lastElement)
-        .doesNotExist('cloned password input does not contain duplicate id');
-      assert
-        .dom('#my-text-input', lastElement)
-        .doesNotExist('cloned text input does not contain duplicate id');
-      assert
-        .dom('#my-button', lastElement)
-        .doesNotExist('cloned button does not contain duplicate id');
-    }, 100);
+    liquidWormholeElements = findAll('.liquid-wormhole-element');
+    firstElement = liquidWormholeElements[0];
+    lastElement = liquidWormholeElements[liquidWormholeElements.length - 1];
 
+    assert
+      .dom('#my-password-input', firstElement)
+      .hasAttribute(
+        'id',
+        'my-password-input',
+        'password input contains original id'
+      );
+    assert
+      .dom('#my-text-input', firstElement)
+      .hasAttribute('id', 'my-text-input', 'text input contains original id');
+    assert
+      .dom('#my-button', firstElement)
+      .hasAttribute('id', 'my-button', 'button contains original id');
+
+    assert
+      .dom('#my-password-input', lastElement)
+      .doesNotExist('cloned password input does not contain duplicate id');
+    assert
+      .dom('#my-text-input', lastElement)
+      .doesNotExist('cloned text input does not contain duplicate id');
+    assert
+      .dom('#my-button', lastElement)
+      .doesNotExist('cloned button does not contain duplicate id');
     await settled();
   });
 });

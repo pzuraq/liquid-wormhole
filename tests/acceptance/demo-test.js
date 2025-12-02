@@ -1,4 +1,4 @@
-import { click, findAll, visit } from '@ember/test-helpers';
+import { click, findAll, visit, waitUntil } from '@ember/test-helpers';
 import {
   injectTransitionSpies,
   ranTransition,
@@ -25,7 +25,26 @@ module('Acceptance: Demos', function (hooks) {
   test('destination container is cleaned when empty', async function (assert) {
     await visit('/demo');
     await click('#hello-world-button');
+
+    await waitUntil(
+      () =>
+        findAll('.default-liquid-destination .liquid-destination-stack')
+          .length === 1
+    );
+
+    assert.equal(
+      findAll('.default-liquid-destination .liquid-destination-stack').length,
+      1,
+      "it's not empty"
+    );
+
     await click('#hello-world-button');
+
+    await waitUntil(
+      () =>
+        findAll('.default-liquid-destination .liquid-destination-stack')
+          .length === 0
+    );
 
     assert.equal(
       findAll('.default-liquid-destination .liquid-destination-stack').length,
@@ -41,6 +60,13 @@ module('Acceptance: Demos', function (hooks) {
     noTransitionsYet(app, assert);
 
     await click('#hello-world-button');
+
+    await waitUntil(
+      () =>
+        findAll('.default-liquid-destination .liquid-wormhole-element')
+          .length === 1
+    );
+
     assert.equal(
       findAll('.default-liquid-destination .liquid-wormhole-element').length,
       1,
@@ -49,6 +75,12 @@ module('Acceptance: Demos', function (hooks) {
     ranTransition(app, assert, 'wormhole');
 
     await click('#hello-world-button');
+    await waitUntil(
+      () =>
+        findAll('.default-liquid-destination .liquid-wormhole-element')
+          .length === 0
+    );
+
     assert.equal(
       findAll('.default-liquid-destination .liquid-wormhole-element').length,
       0,
