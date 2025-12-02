@@ -3,6 +3,15 @@
 
 
 
+
+## v5.0.2 (2025-12-02)
+
+#### :bug: Bug Fix
+* [#86](https://github.com/pzuraq/liquid-wormhole/pull/86) Add StackContainer for more correct @containerElement ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### Committers: 1
+- Robbie Wagner ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
 ## v5.0.1 (2025-12-02)
 
 ## v5.0.0 (2025-12-02)
