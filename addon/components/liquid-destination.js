@@ -5,6 +5,7 @@ import Component from '@ember/component';
 import EmberObject, { action, set } from '@ember/object';
 import { scheduleOnce, next } from '@ember/runloop';
 import { A } from '@ember/array';
+import { tracked } from '@glimmer/tracking';
 import layout from '../templates/components/liquid-destination';
 
 export default class LiquidDestination extends Component {
@@ -15,6 +16,7 @@ export default class LiquidDestination extends Component {
 
   extraClassesString = '';
   name = 'default';
+  @tracked containerElement = null;
 
   @gt('stacks.length', 0) hasWormholes;
 
@@ -71,6 +73,11 @@ export default class LiquidDestination extends Component {
     next(() => stack.removeObject(item));
   }
 
+  @action
+  setContainerElement(element) {
+    this.containerElement = element;
+  }
+
   flushWormholeQueue() {
     this.wormholeQueue.forEach((wormhole) => {
       const stackName = wormhole.get('stack');
@@ -122,7 +129,7 @@ export default class LiquidDestination extends Component {
 
     // If wormholes were made w/o animations, they need to be made visible manually.
     const liquidWormholeElement = view.element.querySelector(
-      '.liquid-wormhole-element',
+      '.liquid-wormhole-element'
     );
     if (liquidWormholeElement) {
       liquidWormholeElement.style.visibility = 'visible';
