@@ -5,7 +5,6 @@ import Component from '@ember/component';
 import EmberObject, { action, get, set } from '@ember/object';
 import { scheduleOnce, next } from '@ember/runloop';
 import { A } from '@ember/array';
-import { tracked } from '@glimmer/tracking';
 import layout from '../templates/components/liquid-destination';
 
 export default class LiquidDestination extends Component {
@@ -16,7 +15,6 @@ export default class LiquidDestination extends Component {
 
   extraClassesString = '';
   name = 'default';
-  @tracked containerElement = null;
 
   @gt('stacks.length', 0) hasWormholes;
 
@@ -70,11 +68,6 @@ export default class LiquidDestination extends Component {
     item.set('_replaceNodes', true);
 
     next(() => stack.removeObject(item));
-  }
-
-  @action
-  setContainerElement(element) {
-    this.containerElement = element;
   }
 
   flushWormholeQueue() {
