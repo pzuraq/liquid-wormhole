@@ -13,8 +13,11 @@
 # misc
 /coverage/
 !.*
-.eslintcache
-.lint-todo/
+.*/
+/pnpm-lock.yaml
+ember-cli-update.json
+*.html
+*.md
 
 # ember-try
 /.node_modules.ember-try/

@@ -1,11 +1,11 @@
-$modal-backdrop-bg:           rgba(36, 51, 66, 0.66);
-$modal-content-bg:            white;
+$modal-backdrop-bg: rgba(36, 51, 66, 0.66);
+$modal-content-bg: white;
 $modal-content-border-radius: 7px;
-$modal-content-border-color:  mix($brand-primary, white, 10%);
-$modal-content-box-shadow:    -14px 14px 0 0 rgba(0,0,0,.35);
-$modal-footer-bg:             mix($brand-primary, white, 10%);
-$zindex-modal-background:     1040;
-$zindex-modal:                1050;
+$modal-content-border-color: mix($brand-primary, white, 10%);
+$modal-content-box-shadow: -14px 14px 0 0 rgba(0, 0, 0, 0.35);
+$modal-footer-bg: mix($brand-primary, white, 10%);
+$zindex-modal-background: 1040;
+$zindex-modal: 1050;
 
 //
 // Modals
@@ -26,7 +26,7 @@ $zindex-modal:                1050;
   position: fixed;
   width: 100%;
   height: 100%;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 // Container that the modal scrolls within
@@ -72,7 +72,7 @@ $zindex-modal:                1050;
   white-space: nowrap;
 }
 
- // Close icon
+// Close icon
 .modal-header .close {
   margin: 5px 0 0;
   padding: 0;
@@ -84,7 +84,7 @@ $zindex-modal:                1050;
 // Title text within header
 .modal-title {
   margin: 0;
-  font-size: ceil($component-font-size-base * 1.60); // ~24px
+  font-size: ceil($component-font-size-base * 1.6); // ~24px
   line-height: 30px;
 }
 
@@ -135,9 +135,7 @@ $zindex-modal:                1050;
 
 // Scale up the modal
 @media screen and (min-width: 768px) {
-
   .modal-dialog {
     margin: 0;
   }
-
 }

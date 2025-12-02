@@ -1,9 +1,9 @@
-@import 'bootstrap';
-@import 'modals';
-@import 'flyouts';
-@import 'tabs';
-@import 'navigation';
-@import 'typography';
+@import "bootstrap";
+@import "modals";
+@import "flyouts";
+@import "tabs";
+@import "navigation";
+@import "typography";
 
 body {
   margin: 0;
@@ -48,7 +48,11 @@ body {
   padding: 20px 74px 20px 0;
 }
 
-.red-box, .blue-box, .green-box, .yellow-box, .orange-box {
+.red-box,
+.blue-box,
+.green-box,
+.yellow-box,
+.orange-box {
   padding: 20px;
   color: white;
 }

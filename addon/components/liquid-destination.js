@@ -123,7 +123,7 @@ export default class LiquidDestination extends Component {
 
     // If wormholes were made w/o animations, they need to be made visible manually.
     const liquidWormholeElement = view.element.querySelector(
-      '.liquid-wormhole-element',
+      '.liquid-wormhole-element'
     );
     if (liquidWormholeElement) {
       liquidWormholeElement.style.visibility = 'visible';

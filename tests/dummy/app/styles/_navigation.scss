@@ -34,7 +34,6 @@
   }
 
   .navbar-toggle.fa {
-
     @media (min-width: 768px) {
       display: none;
     }
@@ -52,7 +51,7 @@
 
   .navbar-break {
     @media (max-width: 767px) {
-        border-top: solid 2px #2f4154;
+      border-top: solid 2px #2f4154;
     }
   }
 }

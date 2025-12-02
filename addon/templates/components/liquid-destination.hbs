@@ -1,4 +1,8 @@
-<div class="liquid-destination {{this.extraClassesString}} {{if this.hasWormholes "has-wormholes"}}">
+<div
+  class="liquid-destination
+    {{this.extraClassesString}}
+    {{if this.hasWormholes 'has-wormholes'}}"
+>
   {{#each this.stacks as |stack|}}
     <div class="liquid-destination-stack">
       <LiquidVersions
@@ -7,7 +11,8 @@
         @renderWhenFalse={{true}}
         @name="liquid-wormhole"
         @matchContext={{this.matchContext}}
-        @stackName={{stack.name}} as |item|
+        @stackName={{stack.name}}
+        as |item|
       >
         <LiquidAppend
           @nodes={{item.nodes}}
