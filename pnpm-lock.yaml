@@ -29,6 +29,9 @@ importers:
       ember-cli-htmlbars:
         specifier: ^6.3.0
         version: 6.3.0
+      ember-modifier:
+        specifier: ^4.2.2
+        version: 4.2.2(@babel/core@7.28.5)
     devDependencies:
       '@babel/eslint-parser':
         specifier: ^7.28.5

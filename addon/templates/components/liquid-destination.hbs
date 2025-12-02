@@ -1,11 +1,10 @@
 <div
-  {{did-insert this.setContainerElement}}
   class="liquid-destination
     {{this.extraClassesString}}
     {{if this.hasWormholes 'has-wormholes'}}"
 >
   {{#each this.stacks as |stack|}}
-    <div class="liquid-destination-stack">
+    <StackContainer as |container|>
       <LiquidVersions
         @value={{stack.lastObject}}
         @notify={{this}}
@@ -13,7 +12,7 @@
         @name="liquid-wormhole"
         @matchContext={{this.matchContext}}
         @stackName={{stack.name}}
-        @containerElement={{this.containerElement}}
+        @containerElement={{container.element}}
         as |item|
       >
         <LiquidAppend
@@ -23,6 +22,6 @@
           @click={{item.wormhole.click}}
         />
       </LiquidVersions>
-    </div>
+    </StackContainer>
   {{/each}}
 </div>
