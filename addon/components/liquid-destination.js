@@ -134,6 +134,7 @@ export default class LiquidDestination extends Component {
     // Clean empty stacks
     if (value === null) {
       const stacks = this.stacks;
+      // eslint-disable-next-line ember/no-get
       const stackName = get(view, 'parentView.stackName');
       const stack = this.stackMap.get(stackName);
 
