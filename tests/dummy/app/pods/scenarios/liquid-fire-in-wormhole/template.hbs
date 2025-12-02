@@ -4,11 +4,12 @@
 
 <LiquidWormhole @class="blue-box">
   <div id="content-box">
-    {{#liquid-if this.showingOther}}
+    {{#liquid-if predicate=this.showingOther}}
       <span id="showing-other">
         Show Other
       </span>
     {{else}}
+
       <span id="not-showing-other">
         Don't Show Other
       </span>

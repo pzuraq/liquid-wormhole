@@ -14,7 +14,7 @@ export default class LiquidFireTransitionsService extends TransitionMap {
       const versions = conditions.versions;
 
       conditions.versions = versions.map((version) => version.value || version);
-      conditions.parentElement = conditions.parentElement.find(
+      conditions.parentElement = conditions.parentElement.querySelector(
         '.liquid-wormhole-element'
       );
       conditions.firstTime = 'no';

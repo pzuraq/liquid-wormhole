@@ -2,9 +2,10 @@
 import { inject as service } from '@ember/service';
 import { gt } from '@ember/object/computed';
 import Component from '@ember/component';
-import EmberObject, { action, set } from '@ember/object';
+import EmberObject, { action, get, set } from '@ember/object';
 import { scheduleOnce, next } from '@ember/runloop';
 import { A } from '@ember/array';
+import { tracked } from '@glimmer/tracking';
 import layout from '../templates/components/liquid-destination';
 
 export default class LiquidDestination extends Component {
@@ -15,6 +16,7 @@ export default class LiquidDestination extends Component {
 
   extraClassesString = '';
   name = 'default';
+  @tracked containerElement = null;
 
   @gt('stacks.length', 0) hasWormholes;
 
@@ -44,7 +46,7 @@ export default class LiquidDestination extends Component {
     // that they appear in templates, because child components get rendered before
     // their parents. This logic inserts parent components *before* their children
     // so the ordering is correct.
-    var appendIndex = this.wormholeQueue.get('length') - 1;
+    let appendIndex = this.wormholeQueue.length - 1;
 
     for (; appendIndex >= 0; appendIndex--) {
       const lastWormholeElement = this.wormholeQueue[appendIndex].element;
@@ -60,24 +62,27 @@ export default class LiquidDestination extends Component {
   }
 
   removeWormhole(wormhole) {
-    const stackName = wormhole.get('stack');
-    const stack = this.stackMap.get(stackName);
+    const stack = this.stackMap.get(wormhole.stack);
     const item = stack.find((item) => item && item.wormhole === wormhole);
 
-    const newNodes = item.get('nodes').clone();
+    const newNodes = item.nodes.map((node) => node.cloneNode(true));
     item.set('nodes', newNodes);
     item.set('_replaceNodes', true);
 
     next(() => stack.removeObject(item));
   }
 
+  @action
+  setContainerElement(element) {
+    this.containerElement = element;
+  }
+
   flushWormholeQueue() {
     this.wormholeQueue.forEach((wormhole) => {
-      const stackName = wormhole.get('stack');
-      const stack = this.stackMap.get(stackName) || this.createStack(wormhole);
+      const stack =
+        this.stackMap.get(wormhole.stack) || this.createStack(wormhole);
 
-      const nodes = wormhole.get('nodes');
-      const value = wormhole.get('value');
+      const { nodes, value } = wormhole;
 
       const item = EmberObject.create({ nodes, wormhole, value });
 
@@ -93,12 +98,10 @@ export default class LiquidDestination extends Component {
   }
 
   createStack(wormhole) {
-    const stackName = wormhole.get('stack');
-
     const stack = A([null]);
-    stack.set('name', stackName);
+    stack.set('name', wormhole.stack);
 
-    this.stackMap.set(stackName, stack);
+    this.stackMap.set(wormhole.stack, stack);
     this.stacks.pushObject(stack);
 
     return stack;
@@ -131,7 +134,8 @@ export default class LiquidDestination extends Component {
     // Clean empty stacks
     if (value === null) {
       const stacks = this.stacks;
-      const stackName = view.get('parentView.stackName');
+      // eslint-disable-next-line ember/no-get
+      const stackName = get(view, 'parentView.stackName');
       const stack = this.stackMap.get(stackName);
 
       stacks.removeObject(stack);

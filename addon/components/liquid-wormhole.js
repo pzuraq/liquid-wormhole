@@ -6,7 +6,6 @@ import { tracked } from '@glimmer/tracking';
 import { typeOf } from '@ember/utils';
 import { guidFor } from '@ember/object/internals';
 import { ensureSafeComponent } from '@embroider/util';
-import $ from 'jquery';
 
 export default class LiquidWormhole extends Component {
   @service('liquid-wormhole') liquidWormholeService;
@@ -50,7 +49,7 @@ export default class LiquidWormhole extends Component {
 
   didInsertElement() {
     super.didInsertElement(...arguments);
-    const nodes = $(this.element).children();
+    const nodes = Array.from(this.element.children);
     set(this, 'nodes', nodes);
 
     this.element.className = 'liquid-wormhole-container';

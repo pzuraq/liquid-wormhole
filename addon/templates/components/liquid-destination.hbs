@@ -1,4 +1,5 @@
 <div
+  {{did-insert this.setContainerElement}}
   class="liquid-destination
     {{this.extraClassesString}}
     {{if this.hasWormholes 'has-wormholes'}}"
@@ -12,6 +13,7 @@
         @name="liquid-wormhole"
         @matchContext={{this.matchContext}}
         @stackName={{stack.name}}
+        @containerElement={{this.containerElement}}
         as |item|
       >
         <LiquidAppend
