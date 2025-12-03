@@ -1,6 +1,6 @@
 {
   "name": "liquid-wormhole",
-  "version": "5.0.3",
+  "version": "6.0.0",
   "description": "Wormholes with the power of Liquid Fire",
   "keywords": [
     "ember-addon"

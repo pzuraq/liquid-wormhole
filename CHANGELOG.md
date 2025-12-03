@@ -5,6 +5,15 @@
 
 
 
+
+## v6.0.0 (2025-12-03)
+
+#### :boom: Breaking Change
+* [#88](https://github.com/pzuraq/liquid-wormhole/pull/88) ember-cli-update to 5.12, require node 18+ ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### Committers: 1
+- Robbie Wagner ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
 ## v5.0.3 (2025-12-03)
 
 #### :house: Internal
