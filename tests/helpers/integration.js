@@ -14,7 +14,7 @@ function transitionName(name) {
 export function ranTransition(app, assert, name) {
   assert.ok(
     transitionMap(app).transitionFor.returned(transitionName(name)),
-    `expected transition ${name}`
+    `expected transition ${name}`,
   );
 }
 
@@ -23,9 +23,9 @@ export function noTransitionsYet(app, assert) {
   var ranTransitions = A(tmap.transitionFor.returnValues);
   assert.ok(
     !ranTransitions.any(
-      (transition) => transition.animation !== tmap.defaultAction()
+      (transition) => transition.animation !== tmap.defaultAction(),
     ),
-    'expected no transitions'
+    'expected no transitions',
   );
 }
 

@@ -29,13 +29,13 @@ module('Acceptance: Demos', function (hooks) {
     await waitUntil(
       () =>
         findAll('.default-liquid-destination .liquid-destination-stack')
-          .length === 1
+          .length === 1,
     );
 
     assert.equal(
       findAll('.default-liquid-destination .liquid-destination-stack').length,
       1,
-      "it's not empty"
+      "it's not empty",
     );
 
     await click('#hello-world-button');
@@ -43,13 +43,13 @@ module('Acceptance: Demos', function (hooks) {
     await waitUntil(
       () =>
         findAll('.default-liquid-destination .liquid-destination-stack')
-          .length === 0
+          .length === 0,
     );
 
     assert.equal(
       findAll('.default-liquid-destination .liquid-destination-stack').length,
       0,
-      "it's empty"
+      "it's empty",
     );
   });
 
@@ -64,13 +64,13 @@ module('Acceptance: Demos', function (hooks) {
     await waitUntil(
       () =>
         findAll('.default-liquid-destination .liquid-wormhole-element')
-          .length === 1
+          .length === 1,
     );
 
     assert.equal(
       findAll('.default-liquid-destination .liquid-wormhole-element').length,
       1,
-      'it exists'
+      'it exists',
     );
     ranTransition(app, assert, 'wormhole');
 
@@ -78,13 +78,13 @@ module('Acceptance: Demos', function (hooks) {
     await waitUntil(
       () =>
         findAll('.default-liquid-destination .liquid-wormhole-element')
-          .length === 0
+          .length === 0,
     );
 
     assert.equal(
       findAll('.default-liquid-destination .liquid-wormhole-element').length,
       0,
-      'it closed'
+      'it closed',
     );
     ranTransition(app, assert, 'wormhole');
   });

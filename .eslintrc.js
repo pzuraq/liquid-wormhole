@@ -60,6 +60,7 @@ module.exports = {
       extends: ['plugin:qunit/recommended'],
       rules: {
         'qunit/no-assert-equal': 'off',
+        'qunit/require-expect': 'off',
       },
     },
   ],

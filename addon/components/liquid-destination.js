@@ -1,4 +1,4 @@
-/* eslint-disable ember/no-computed-properties-in-native-classes */
+/* eslint-disable ember/no-computed-properties-in-native-classes, ember/no-runloop */
 import { inject as service } from '@ember/service';
 import { gt } from '@ember/object/computed';
 import Component from '@ember/component';
@@ -118,7 +118,7 @@ export default class LiquidDestination extends Component {
 
     // If wormholes were made w/o animations, they need to be made visible manually.
     const liquidWormholeElement = view.element.querySelector(
-      '.liquid-wormhole-element'
+      '.liquid-wormhole-element',
     );
     if (liquidWormholeElement) {
       liquidWormholeElement.style.visibility = 'visible';

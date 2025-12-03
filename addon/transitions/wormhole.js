@@ -31,7 +31,7 @@ export default async function wormhole(context) {
   if (this.oldElement) {
     // this.oldElement is the container, find .liquid-wormhole-element inside it
     oldWormholeElement = this.oldElement.querySelector(
-      '.liquid-wormhole-element:last-child'
+      '.liquid-wormhole-element:last-child',
     );
 
     this.oldElement = null;
@@ -70,7 +70,7 @@ export default async function wormhole(context) {
   if (this.newElement) {
     // this.newElement is the container, find .liquid-wormhole-element inside it
     newWormholeElement = this.newElement.querySelector(
-      '.liquid-wormhole-element:last-child'
+      '.liquid-wormhole-element:last-child',
     );
 
     this.newElement = null;
