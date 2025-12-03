@@ -4,6 +4,15 @@
 
 
 
+
+## v5.0.3 (2025-12-03)
+
+#### :house: Internal
+* [#87](https://github.com/pzuraq/liquid-wormhole/pull/87) Remove ember-source peerDep ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
+#### Committers: 1
+- Robbie Wagner ([@RobbieTheWagner](https://github.com/RobbieTheWagner))
+
 ## v5.0.2 (2025-12-02)
 
 #### :bug: Bug Fix
