@@ -34,11 +34,11 @@ module('Acceptance: Scenarios', function (hooks) {
         return (
           getComputedStyle(liquidWormholeElements[0]).visibility === 'hidden' &&
           getComputedStyle(
-            liquidWormholeElements[liquidWormholeElements.length - 1]
+            liquidWormholeElements[liquidWormholeElements.length - 1],
           ).visibility === 'visible'
         );
       },
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     assert.dom(liquidWormholeElements[0]).hasStyle({ visibility: 'hidden' });
@@ -55,11 +55,11 @@ module('Acceptance: Scenarios', function (hooks) {
         return (
           getComputedStyle(liquidWormholeElements[0]).visibility === 'hidden' &&
           getComputedStyle(
-            liquidWormholeElements[liquidWormholeElements.length - 1]
+            liquidWormholeElements[liquidWormholeElements.length - 1],
           ).visibility === 'visible'
         );
       },
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     assert.dom(liquidWormholeElements[0]).hasStyle({ visibility: 'hidden' });
@@ -76,7 +76,7 @@ module('Acceptance: Scenarios', function (hooks) {
       () =>
         findAll('.default-liquid-destination .liquid-wormhole-element')
           .length === 1,
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     assert
@@ -88,7 +88,7 @@ module('Acceptance: Scenarios', function (hooks) {
       () =>
         findAll('.default-liquid-destination .liquid-wormhole-element')
           .length === 0,
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     assert
@@ -107,15 +107,15 @@ module('Acceptance: Scenarios', function (hooks) {
 
     assert.ok(
       firstWormhole.classList.contains('green-box'),
-      'First wormhole renders in correct order'
+      'First wormhole renders in correct order',
     );
     assert.ok(
       secondWormhole.classList.contains('blue-box'),
-      'Second wormhole renders in correct order'
+      'Second wormhole renders in correct order',
     );
     assert.ok(
       thirdWormhole.classList.contains('red-box'),
-      'Third wormhole renders in correct order'
+      'Third wormhole renders in correct order',
     );
   });
 
@@ -134,7 +134,7 @@ module('Acceptance: Scenarios', function (hooks) {
         const showingOther = find('#showing-other');
         return getComputedStyle(showingOther).visibility === 'visible';
       },
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     assert.dom('#content-box').exists();
@@ -147,7 +147,7 @@ module('Acceptance: Scenarios', function (hooks) {
         const showingOther = find('#not-showing-other');
         return getComputedStyle(showingOther).visibility === 'visible';
       },
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     assert.dom('#not-showing-other').hasStyle({ visibility: 'visible' });
@@ -173,7 +173,7 @@ module('Acceptance: Scenarios', function (hooks) {
           !lastElement.querySelector('#my-password-input')
         );
       },
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     assert
@@ -181,7 +181,7 @@ module('Acceptance: Scenarios', function (hooks) {
       .hasAttribute(
         'id',
         'my-password-input',
-        'password input contains original id'
+        'password input contains original id',
       );
     assert
       .dom('#my-text-input', firstElement)
@@ -214,7 +214,7 @@ module('Acceptance: Scenarios', function (hooks) {
           !lastElement.querySelector('#my-password-input')
         );
       },
-      { timeout: 5000 }
+      { timeout: 5000 },
     );
 
     assert
@@ -222,7 +222,7 @@ module('Acceptance: Scenarios', function (hooks) {
       .hasAttribute(
         'id',
         'my-password-input',
-        'password input contains original id'
+        'password input contains original id',
       );
     assert
       .dom('#my-text-input', firstElement)
